@@ -1,0 +1,11 @@
+{
+  "name": "med-verify-scan-root",
+  "private": true,
+  "scripts": {
+    "dev": "npm --prefix med-verify-scan-main run dev",
+    "start": "npm --prefix med-verify-scan-main run dev",
+    "build": "npm --prefix med-verify-scan-main run build",
+    "lint": "npm --prefix med-verify-scan-main run lint",
+    "preview": "npm --prefix med-verify-scan-main run preview"
+  }
+}
