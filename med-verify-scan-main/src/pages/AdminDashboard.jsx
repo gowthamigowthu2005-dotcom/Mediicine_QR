@@ -22,10 +22,12 @@ import {
 
 const AdminDashboard = () => {
   const [stats, setStats] = useState({
+    totalUsers: 0,
     totalSellers: 0,
     pendingSellers: 0,
     approvedSellers: 0,
     totalMedicines: 0,
+    approvedMedicines: 0,
     pendingMedicines: 0,
     totalQRCodes: 0,
     totalScans: 0
@@ -49,38 +51,51 @@ const AdminDashboard = () => {
         const analyticsData = await analyticsRes.json();
         const data = analyticsData.data;
 
-        // Fetch sellers for pending count
-        const sellersRes = await fetch('http://localhost:5000/admin/sellers', {
-          headers: getAuthHeader(),
-        });
-        let pendingSellers = 0;
-        let approvedSellers = 0;
-        if (sellersRes.ok) {
-          const sellersData = await sellersRes.json();
-          const sellers = sellersData.data || [];
-          pendingSellers = sellers.filter(s => ['pending', 'viewed', 'verifying'].includes(s.status)).length;
-          approvedSellers = sellers.filter(s => s.status === 'approved').length;
+        // Use the enriched analytics data directly
+        const approvedSellers = data.approved_sellers ?? 0;
+        const pendingSellers = data.pending_sellers ?? data.total_sellers - approvedSellers;
+        const totalSellers = data.total_sellers ?? 0;
+        const totalUsers = data.total_users ?? 0;
+        const approvedMedicines = data.approved_medicines ?? 0;
+        const totalMedicines = data.total_medicines ?? 0;
+
+        // Fallback: fetch sellers list if pending_sellers not provided
+        let pendingSellersCount = pendingSellers;
+        if (data.pending_sellers === undefined) {
+          const sellersRes = await fetch('http://localhost:5000/admin/sellers', {
+            headers: getAuthHeader(),
+          });
+          if (sellersRes.ok) {
+            const sellersData = await sellersRes.json();
+            const sellers = sellersData.data || [];
+            pendingSellersCount = sellers.filter(s => ['pending', 'viewed', 'verifying'].includes(s.status)).length;
+          }
         }
 
-        // Fetch medicines for pending count
+        // Fallback: fetch medicines if pending count not available
+        let pendingMedicinesCount = 0;
         const medicinesRes = await fetch('http://localhost:5000/admin/medicines', {
           headers: getAuthHeader(),
         });
-        let pendingMedicines = 0;
         if (medicinesRes.ok) {
           const medicinesData = await medicinesRes.json();
           const medicines = medicinesData.data || [];
-          pendingMedicines = medicines.filter(m => m.approval_status === 'pending').length;
+          pendingMedicinesCount = medicines.filter(m => m.approval_status === 'pending').length;
         }
 
+        const totalScans = data.total_scans ||
+          Object.values(data.scan_counts || {}).reduce((a, b) => Number(a) + Number(b), 0);
+
         setStats({
-          totalSellers: data.total_sellers || 0,
-          pendingSellers,
+          totalUsers,
+          totalSellers,
+          pendingSellers: pendingSellersCount,
           approvedSellers,
-          totalMedicines: data.total_medicines || 0,
-          pendingMedicines,
+          totalMedicines,
+          approvedMedicines,
+          pendingMedicines: pendingMedicinesCount,
           totalQRCodes: data.total_qr_codes || 0,
-          totalScans: Object.values(data.scan_counts || {}).reduce((a, b) => a + b, 0)
+          totalScans
         });
       }
     } catch (error) {
@@ -173,20 +188,28 @@ const AdminDashboard = () => {
 
   const statCards = [
     {
+      title: 'Total Users',
+      value: stats.totalUsers,
+      description: 'Registered accounts',
+      icon: Users,
+      color: 'text-cyan-600',
+      trend: null
+    },
+    {
       title: 'Total Sellers',
       value: stats.totalSellers,
       description: `${stats.approvedSellers} approved`,
-      icon: Users,
+      icon: Building2,
       color: 'text-blue-600',
-      trend: '+12%'
+      trend: null
     },
     {
       title: 'Medicines',
       value: stats.totalMedicines,
-      description: 'In database',
+      description: `${stats.approvedMedicines} approved`,
       icon: Package,
       color: 'text-green-600',
-      trend: '+8%'
+      trend: null
     },
     {
       title: 'QR Codes',
@@ -194,7 +217,7 @@ const AdminDashboard = () => {
       description: 'Generated',
       icon: QrCode,
       color: 'text-purple-600',
-      trend: '+15%'
+      trend: null
     },
     {
       title: 'Total Scans',
@@ -202,7 +225,7 @@ const AdminDashboard = () => {
       description: 'All time',
       icon: TrendingUp,
       color: 'text-orange-600',
-      trend: '+23%'
+      trend: null
     }
   ];
 
@@ -233,7 +256,7 @@ const AdminDashboard = () => {
         </div>
 
         {/* Quick Stats */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4 mb-8">
           {statCards.map((stat, index) => (
             <Card key={index}>
               <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">

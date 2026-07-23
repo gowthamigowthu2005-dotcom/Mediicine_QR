@@ -247,16 +247,41 @@ def get_analytics(current_user, user_id):
         """
         scan_results = execute_query(scan_query, fetch_all=True)
         scan_counts = {r['result']: r['count'] for r in scan_results} if scan_results else {}
-        
-        # Get total sellers
-        seller_query = "SELECT COUNT(*) as count FROM sellers WHERE status = 'approved'"
-        seller_result = execute_query(seller_query, fetch_one=True)
-        total_sellers = seller_result['count'] if seller_result else 0
+
+        # Get total scans (all records in scan_logs)
+        total_scans_query = "SELECT COUNT(*) as count FROM scan_logs"
+        total_scans_result = execute_query(total_scans_query, fetch_one=True)
+        total_scans = total_scans_result['count'] if total_scans_result else 0
+
+        # Get ALL sellers (any status)
+        all_sellers_query = "SELECT COUNT(*) as count FROM sellers"
+        all_sellers_result = execute_query(all_sellers_query, fetch_one=True)
+        total_sellers_all = all_sellers_result['count'] if all_sellers_result else 0
+
+        # Get approved sellers only
+        approved_sellers_query = "SELECT COUNT(*) as count FROM sellers WHERE status = 'approved'"
+        approved_sellers_result = execute_query(approved_sellers_query, fetch_one=True)
+        approved_sellers = approved_sellers_result['count'] if approved_sellers_result else 0
+
+        # Get pending sellers
+        pending_sellers_query = "SELECT COUNT(*) as count FROM sellers WHERE status IN ('pending', 'viewed', 'verifying')"
+        pending_sellers_result = execute_query(pending_sellers_query, fetch_one=True)
+        pending_sellers = pending_sellers_result['count'] if pending_sellers_result else 0
+
+        # Get total registered users (all roles)
+        users_query = "SELECT COUNT(*) as count FROM users"
+        users_result = execute_query(users_query, fetch_one=True)
+        total_users = users_result['count'] if users_result else 0
         
         # Get total medicines
         medicine_query = "SELECT COUNT(*) as count FROM medicines"
         medicine_result = execute_query(medicine_query, fetch_one=True)
         total_medicines = medicine_result['count'] if medicine_result else 0
+
+        # Get approved medicines
+        approved_medicines_query = "SELECT COUNT(*) as count FROM medicines WHERE approval_status = 'approved'"
+        approved_medicines_result = execute_query(approved_medicines_query, fetch_one=True)
+        approved_medicines = approved_medicines_result['count'] if approved_medicines_result else 0
         
         # Get total QR codes
         qr_query = "SELECT COUNT(*) as count FROM qr_codes"
@@ -272,8 +297,13 @@ def get_analytics(current_user, user_id):
             "message": "Analytics retrieved successfully",
             "data": {
                 "scan_counts": scan_counts,
-                "total_sellers": total_sellers,
+                "total_scans": total_scans,
+                "total_sellers": total_sellers_all,
+                "approved_sellers": approved_sellers,
+                "pending_sellers": pending_sellers,
+                "total_users": total_users,
                 "total_medicines": total_medicines,
+                "approved_medicines": approved_medicines,
                 "total_qr_codes": total_qr_codes,
                 "revoked_qr_codes": revoked_qr_codes,
                 "timestamp": datetime.now(timezone.utc).isoformat()

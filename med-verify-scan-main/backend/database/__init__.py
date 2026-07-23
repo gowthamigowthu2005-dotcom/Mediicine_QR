@@ -1,62 +1,86 @@
 """
-Database initialization and connection management
+Database initialization and connection management.
+Uses a robust reconnect strategy compatible with Neon serverless PostgreSQL,
+which drops idle connections after a period of inactivity.
 """
-from flask import current_app
 import psycopg2
+import psycopg2.extras
 from psycopg2.extras import RealDictCursor
-from psycopg2.pool import SimpleConnectionPool
 import os
+import logging
 from contextlib import contextmanager
 
-# Connection pool
-_pool = None
+logger = logging.getLogger(__name__)
+
+# Store the DSN globally so we can create fresh connections on demand
+_database_url = None
+
 
 def init_db(app):
-    """Initialize database connection pool"""
-    global _pool
-    database_url = app.config.get('DATABASE_URL') or os.getenv('DATABASE_URL')
-    
-    if not database_url:
+    """Store the database URL for later use."""
+    global _database_url
+    _database_url = app.config.get('DATABASE_URL') or os.getenv('DATABASE_URL')
+
+    if not _database_url:
         raise ValueError("DATABASE_URL not set in environment or app config")
-    
+
+    # Verify connectivity at startup
     try:
-        _pool = SimpleConnectionPool(
-            minconn=1,
-            maxconn=10,
-            dsn=database_url
-        )
-        app.logger.info("Database connection pool initialized")
+        conn = _new_connection()
+        conn.close()
+        app.logger.info("Database connection verified successfully")
     except Exception as e:
-        app.logger.error(f"Failed to initialize database pool: {e}")
+        app.logger.error(f"Failed to connect to database: {e}")
         raise
 
+
+def _new_connection():
+    """Open a fresh psycopg2 connection with keepalive options."""
+    return psycopg2.connect(
+        _database_url,
+        keepalives=1,
+        keepalives_idle=30,
+        keepalives_interval=10,
+        keepalives_count=5,
+        connect_timeout=10,
+    )
+
+
 def get_db_connection():
-    """Get a database connection from the pool"""
-    if _pool is None:
+    """Return a fresh database connection. Caller must close it."""
+    if _database_url is None:
         raise RuntimeError("Database pool not initialized. Call init_db() first.")
-    return _pool.getconn()
+    return _new_connection()
+
 
 def return_db_connection(conn):
-    """Return a database connection to the pool"""
-    if _pool is None:
-        return
-    _pool.putconn(conn)
+    """Close a connection (replaces pool putconn for compatibility)."""
+    try:
+        if conn and not conn.closed:
+            conn.close()
+    except Exception:
+        pass
+
 
 @contextmanager
 def get_db():
-    """Context manager for database connections"""
+    """Context manager for database connections."""
     conn = get_db_connection()
     try:
         yield conn
         conn.commit()
     except Exception as e:
-        conn.rollback()
+        try:
+            conn.rollback()
+        except Exception:
+            pass
         raise e
     finally:
         return_db_connection(conn)
 
+
 def execute_query(query, params=None, fetch_one=False, fetch_all=False):
-    """Execute a database query"""
+    """Execute a database query with automatic reconnection on failure."""
     conn = get_db_connection()
     try:
         with conn.cursor(cursor_factory=RealDictCursor) as cur:
@@ -73,15 +97,15 @@ def execute_query(query, params=None, fetch_one=False, fetch_all=False):
                 conn.commit()
                 return cur.rowcount
     except Exception as e:
-        conn.rollback()
+        try:
+            conn.rollback()
+        except Exception:
+            pass
         raise e
     finally:
         return_db_connection(conn)
 
-def close_pool():
-    """Close all database connections in the pool"""
-    global _pool
-    if _pool:
-        _pool.closeall()
-        _pool = None
 
+def close_pool():
+    """No-op — kept for API compatibility."""
+    pass
