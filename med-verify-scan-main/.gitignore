@@ -42,3 +42,4 @@ backend/.env
 
 # QR Code outputs
 backend/qr_output/
+backend/database/local_medverify.db
