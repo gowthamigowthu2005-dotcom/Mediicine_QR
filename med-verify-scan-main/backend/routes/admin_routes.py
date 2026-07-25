@@ -307,6 +307,32 @@ def get_audit_logs(current_user, user_id):
     except Exception as e:
         return jsonify({"error": str(e)}), 500
 
+@admin_bp.route('/qr-codes', methods=['GET'])
+@admin_required
+def get_qr_codes(current_user, user_id):
+    """Get all QR codes with medicine and seller details"""
+    try:
+        query = """
+            SELECT 
+                q.*,
+                m.name as medicine_name,
+                m.batch_no,
+                m.category,
+                s.company_name as seller_name
+            FROM qr_codes q
+            LEFT JOIN medicines m ON q.medicine_id = m.id
+            LEFT JOIN sellers s ON m.seller_id = s.id
+            ORDER BY q.issued_at DESC
+        """
+        results = execute_query(query, fetch_all=True)
+        qrs = [dict(r) for r in results] if results else []
+        return jsonify({
+            "message": "QR codes retrieved successfully",
+            "data": qrs
+        }), 200
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
+
 @admin_bp.route('/revoked-keys', methods=['GET'])
 @admin_required
 def get_revoked_keys(current_user, user_id):

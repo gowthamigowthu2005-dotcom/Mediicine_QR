@@ -39,3 +39,6 @@ backend/.venv/
 .env.production
 .env.development
 backend/.env
+
+# QR Code outputs
+backend/qr_output/

@@ -6,11 +6,16 @@ import Register from './pages/Register.jsx';
 import AdminDashboard from './pages/AdminDashboard.jsx';
 import AdminSellerVerification from './pages/AdminSellerVerification.jsx';
 import AdminMedicineManagement from './pages/AdminMedicineManagement.jsx';
+import AdminAnalytics from './pages/AdminAnalytics.jsx';
+import AdminAuditLogs from './pages/AdminAuditLogs.jsx';
+import AdminQRCodes from './pages/AdminQRCodes.jsx';
+import AdminSecurity from './pages/AdminSecurity.jsx';
 import SellerDashboard from './pages/SellerDashboard.jsx';
 import SellerApply from './pages/SellerApply.jsx';
 import SellerStatus from './pages/SellerStatus.jsx';
 import MedicineDatabase from './pages/MedicineDatabase.jsx';
 import UserDashboard from './pages/UserDashboard.jsx';
+import ScanMedicine from './pages/ScanMedicine.jsx';
 import NotFound from './pages/NotFound.jsx';
 import { ProtectedRoute } from './lib/ProtectedRoute.jsx';
 import { SellerDashboardGuard } from './components/SellerDashboardGuard.jsx';
@@ -20,6 +25,14 @@ export default function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Index />} />
+        <Route
+          path="/scan"
+          element={
+            <ProtectedRoute>
+              <ScanMedicine />
+            </ProtectedRoute>
+          }
+        />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         
@@ -47,6 +60,42 @@ export default function App() {
           element={
             <ProtectedRoute requiredRole="admin">
               <AdminMedicineManagement />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/admin/analytics"
+          element={
+            <ProtectedRoute requiredRole="admin">
+              <AdminAnalytics />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/admin/audit-logs"
+          element={
+            <ProtectedRoute requiredRole="admin">
+              <AdminAuditLogs />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/admin/qr-codes"
+          element={
+            <ProtectedRoute requiredRole="admin">
+              <AdminQRCodes />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/admin/security"
+          element={
+            <ProtectedRoute requiredRole="admin">
+              <AdminSecurity />
             </ProtectedRoute>
           }
         />

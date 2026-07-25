@@ -3,7 +3,7 @@ import { Button } from '@/components/ui/button';
 import { useToast } from '@/hooks/use-toast';
 import { getAccessToken, getCurrentUser, logout as logoutUser } from '@/lib/auth';
 import { useEffect, useState } from 'react';
-import { User, LogOut, Shield, ShoppingBag, Home } from 'lucide-react';
+import { User, LogOut, Shield, ShoppingBag, Home, QrCode } from 'lucide-react';
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -110,6 +110,13 @@ export function Navigation() {
             <span>Home</span>
           </Link>
 
+          {isAuthenticated && (
+            <Link to="/scan" className="flex items-center space-x-1 text-sm font-medium text-primary hover:text-primary/80">
+              <QrCode className="h-4 w-4" />
+              <span>Scan Medicine</span>
+            </Link>
+          )}
+
           {isAuthenticated ? (
             <>
               {/* Dashboard Links based on role */}
@@ -177,6 +184,23 @@ export function Navigation() {
                     </div>
                   </DropdownMenuLabel>
                   <DropdownMenuSeparator />
+                  {user?.role === 'admin' && (
+                    <>
+                      <DropdownMenuItem onClick={() => navigate('/admin/analytics')}>
+                        <span>System Analytics</span>
+                      </DropdownMenuItem>
+                      <DropdownMenuItem onClick={() => navigate('/admin/qr-codes')}>
+                        <span>QR Code System</span>
+                      </DropdownMenuItem>
+                      <DropdownMenuItem onClick={() => navigate('/admin/audit-logs')}>
+                        <span>Audit Logs</span>
+                      </DropdownMenuItem>
+                      <DropdownMenuItem onClick={() => navigate('/admin/security')}>
+                        <span>Security &amp; Keys</span>
+                      </DropdownMenuItem>
+                      <DropdownMenuSeparator />
+                    </>
+                  )}
                   <DropdownMenuItem onClick={handleLogout}>
                     <LogOut className="mr-2 h-4 w-4" />
                     <span>Log out</span>
