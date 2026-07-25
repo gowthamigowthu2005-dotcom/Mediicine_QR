@@ -104,10 +104,14 @@ export const QRScanner = () => {
         const html5QrCode = new Html5Qrcode("qr-reader");
         
         await html5QrCode.start(
-          { facingMode: "environment" }, // Try back camera first, falls back to front
+          { facingMode: "environment" },
           {
-            fps: 10,
-            qrbox: { width: 250, height: 250 }
+            fps: 20, // Increased frame rate for faster detection
+            qrbox: (width, height) => {
+              const minDim = Math.min(width, height);
+              const size = Math.floor(minDim * 0.75); // Scan 75% of the frame
+              return { width: size, height: size };
+            }
           },
           (decodedText, decodedResult) => {
             // Success callback - QR code scanned
@@ -115,7 +119,7 @@ export const QRScanner = () => {
             stopCamera(html5QrCode);
           },
           (errorMessage) => {
-            // Error callback - ignore scanning errors
+            // Error callback
           }
         );
         
@@ -523,6 +527,24 @@ export const QRScanner = () => {
                 <p className="text-sm text-blue-900">
                   📸 Point camera at QR code or upload a screenshot to scan
                 </p>
+              </div>
+
+              {/* Manual verification text input fallback */}
+              <div className="pt-4 border-t border-dashed mt-4">
+                <label className="text-xs font-semibold text-muted-foreground block mb-2 uppercase tracking-wider">
+                  Or verify manually by pasting QR text/payload:
+                </label>
+                <div className="flex gap-2">
+                  <Input
+                    placeholder='Paste QR JSON or ID here (e.g. {"medicine_name": ...})'
+                    value={qrCode}
+                    onChange={(e) => setQrCode(e.target.value)}
+                    className="font-mono text-xs flex-1"
+                  />
+                  <Button onClick={() => handleScan()} disabled={isScanning} size="sm">
+                    Verify
+                  </Button>
+                </div>
               </div>
             </div>
           </Card>
