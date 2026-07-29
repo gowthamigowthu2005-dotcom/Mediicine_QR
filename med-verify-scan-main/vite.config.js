@@ -3,6 +3,7 @@ import react from "@vitejs/plugin-react-swc"; // use SWC version
 import path from "path";
 
 export default defineConfig({
+  base: "/Mediicine_QR/",
   plugins: [react()],
   resolve: {
     alias: {
@@ -10,3 +11,4 @@ export default defineConfig({
     },
   },
 });
+
