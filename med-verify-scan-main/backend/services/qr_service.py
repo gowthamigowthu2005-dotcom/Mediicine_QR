@@ -5,6 +5,7 @@ Only: Signing, Database storage, Medicine/Seller validation
 import json
 from datetime import datetime
 from typing import Dict, Any, Optional
+from utils.helpers import format_datetime
 from services.qr_signer import QRCodeSigner, verify_qr_signature
 from database.models import Medicine, QRCode, Seller
 
@@ -64,7 +65,7 @@ class QRCodeService:
             "public_key": seller.get('public_key'),
             "blockchain_tx": None,      # <== REMOVED
             "blockchain_explorer_url": None,
-            "issued_at": qr_code['issued_at'].isoformat() if qr_code.get('issued_at') else None
+            "issued_at": format_datetime(qr_code.get('issued_at'))
         }
     
     def verify_qr_code(self, qr_data: Dict[str, Any], public_key_pem: str) -> Dict[str, Any]:

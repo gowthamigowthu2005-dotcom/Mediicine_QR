@@ -14,8 +14,29 @@ def hash_password(password: str) -> str:
     return hashed.decode('utf-8')
 
 def verify_password(password: str, password_hash: str) -> bool:
-    """Verify a password against a hash"""
-    return bcrypt.checkpw(password.encode('utf-8'), password_hash.encode('utf-8'))
+    """Verify a password against a hash (supports both bcrypt and werkzeug)"""
+    if not password_hash:
+        return False
+    try:
+        if password_hash.startswith('$2b$') or password_hash.startswith('$2a$'):
+            return bcrypt.checkpw(password.encode('utf-8'), password_hash.encode('utf-8'))
+    except Exception:
+        pass
+    try:
+        from werkzeug.security import check_password_hash
+        return check_password_hash(password_hash, password)
+    except Exception:
+        return False
+
+
+def format_datetime(val):
+    if not val:
+        return None
+    if isinstance(val, str):
+        return val
+    if hasattr(val, 'isoformat'):
+        return val.isoformat()
+    return str(val)
 
 def register_user(email: str, password: str, role: str = 'user', timezone: str = 'UTC') -> Dict[str, Any]:
     """
@@ -51,7 +72,7 @@ def register_user(email: str, password: str, role: str = 'user', timezone: str =
             "email": user['email'],
             "role": user['role'],
             "timezone": user['timezone'],
-            "created_at": user['created_at'].isoformat() if user.get('created_at') else None
+            "created_at": format_datetime(user.get('created_at'))
         },
         "access_token": access_token,
         "refresh_token": refresh_token
@@ -94,7 +115,7 @@ def login_user(email: str, password: str) -> Optional[Dict[str, Any]]:
             "email": user['email'],
             "role": user['role'],
             "timezone": user['timezone'],
-            "last_login": user.get('last_login').isoformat() if user.get('last_login') else None
+            "last_login": format_datetime(user.get('last_login'))
         },
         "access_token": access_token,
         "refresh_token": refresh_token

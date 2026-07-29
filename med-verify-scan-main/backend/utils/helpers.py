@@ -13,10 +13,14 @@ def get_current_timestamp() -> datetime:
     """Get current UTC timestamp"""
     return datetime.utcnow()
 
-def format_datetime(dt: datetime) -> str:
-    """Format datetime to ISO string"""
+def format_datetime(dt) -> str:
+    """Format datetime or string timestamp to ISO string safely"""
     if dt:
-        return dt.isoformat()
+        if isinstance(dt, str):
+            return dt
+        if hasattr(dt, 'isoformat'):
+            return dt.isoformat()
+        return str(dt)
     return None
 
 def sanitize_dict(data: Dict[str, Any], exclude_keys: list = None) -> Dict[str, Any]:

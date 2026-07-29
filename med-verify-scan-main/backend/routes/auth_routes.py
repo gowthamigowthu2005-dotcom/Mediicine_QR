@@ -183,6 +183,9 @@ def login():
         }), 200
     
     except Exception as e:
+        import traceback
+        print("=== LOGIN EXCEPTION TRACEBACK ===")
+        traceback.print_exc()
         return jsonify({"error": str(e)}), 500
 
 @auth_bp.route('/refresh', methods=['POST'])
@@ -209,14 +212,14 @@ def refresh():
 def get_current_user_info(current_user, user_id):
     """Get current user information"""
     try:
-        # Remove sensitive data
+        from utils.helpers import format_datetime
         user_data = {
             "id": str(current_user['id']),
             "email": current_user['email'],
             "role": current_user['role'],
             "timezone": current_user.get('timezone', 'UTC'),
-            "created_at": current_user.get('created_at').isoformat() if current_user.get('created_at') else None,
-            "last_login": current_user.get('last_login').isoformat() if current_user.get('last_login') else None
+            "created_at": format_datetime(current_user.get('created_at')),
+            "last_login": format_datetime(current_user.get('last_login'))
         }
         
         return jsonify({
@@ -225,6 +228,9 @@ def get_current_user_info(current_user, user_id):
         }), 200
     
     except Exception as e:
+        import traceback
+        print("=== AUTH ROUTE EXCEPTION ===")
+        traceback.print_exc()
         return jsonify({"error": str(e)}), 500
 
 @auth_bp.route('/logout', methods=['POST'])
