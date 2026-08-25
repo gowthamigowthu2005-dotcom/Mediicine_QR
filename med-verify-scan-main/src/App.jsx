@@ -1,4 +1,5 @@
 import React from 'react';
+import FloatingAIChat from './components/FloatingAIChat.jsx';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Index from './pages/Index.jsx';
 import Login from './pages/Login.jsx';
@@ -154,6 +155,9 @@ export default function App() {
         
         <Route path="*" element={<NotFound />} />
       </Routes>
+
+      {/* AI Assistant — visible on all pages */}
+      <FloatingAIChat />
     </BrowserRouter>
   );
 }
