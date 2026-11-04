@@ -21,9 +21,6 @@
 
 #### Frontend
 - **React 18** - UI framework
-- **Vite** - Build tool
-- **Tailwind CSS** - Styling
-- **Shadcn UI** - Component library
 - **html5-qrcode** - QR code scanning
 - **React Router** - Routing
 

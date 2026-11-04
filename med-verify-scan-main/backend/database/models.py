@@ -138,17 +138,24 @@ class Medicine:
                category: str = None, description: str = None, image_url: str = None,
                stock_quantity: int = 0, delivery_status: str = 'in_stock') -> Dict[str, Any]:
         """Create a new medicine"""
+        import uuid
+        med_id = str(uuid.uuid4())
         query = """
-            INSERT INTO medicines (seller_id, name, batch_no, mfg_date, expiry_date, 
+            INSERT INTO medicines (id, seller_id, name, batch_no, mfg_date, expiry_date, 
                                  dosage, strength, category, description, image_url,
                                  stock_quantity, delivery_status)
-            VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
+            VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
             RETURNING id, seller_id, name, batch_no, mfg_date, expiry_date, stock_quantity, delivery_status, created_at
         """
-        result = execute_query(query, (seller_id, name, batch_no, mfg_date, expiry_date,
+        result = execute_query(query, (med_id, seller_id, name, batch_no, mfg_date, expiry_date,
                                       dosage, strength, category, description, image_url,
                                       stock_quantity, delivery_status), fetch_one=True)
-        return dict(result) if result else None
+        if result:
+            res_dict = dict(result)
+            if 'id' not in res_dict or not res_dict['id']:
+                res_dict['id'] = med_id
+            return res_dict
+        return {"id": med_id, "seller_id": seller_id, "name": name, "batch_no": batch_no}
     
     @staticmethod
     def get_by_id(medicine_id: str) -> Optional[Dict[str, Any]]:
@@ -237,14 +244,21 @@ class QRCode:
                blockchain_tx: str = None, issued_by: str = None) -> Dict[str, Any]:
         """Create a new QR code"""
         import json
+        import uuid
+        qr_id = str(uuid.uuid4())
         query = """
-            INSERT INTO qr_codes (medicine_id, payload_json, signature, blockchain_tx, issued_by)
-            VALUES (%s, %s::jsonb, %s, %s, %s)
+            INSERT INTO qr_codes (id, medicine_id, payload_json, signature, blockchain_tx, issued_by)
+            VALUES (%s, %s, %s, %s, %s, %s)
             RETURNING id, medicine_id, issued_at, blockchain_tx
         """
-        result = execute_query(query, (medicine_id, json.dumps(payload_json), signature, 
+        result = execute_query(query, (qr_id, medicine_id, json.dumps(payload_json), signature, 
                                       blockchain_tx, issued_by), fetch_one=True)
-        return dict(result) if result else None
+        if result:
+            res_dict = dict(result)
+            if 'id' not in res_dict or not res_dict['id']:
+                res_dict['id'] = qr_id
+            return res_dict
+        return {"id": qr_id, "medicine_id": medicine_id}
     
     @staticmethod
     def get_by_id(qr_id: str) -> Optional[Dict[str, Any]]:

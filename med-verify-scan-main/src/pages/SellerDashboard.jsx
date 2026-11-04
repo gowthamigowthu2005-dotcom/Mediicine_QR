@@ -22,6 +22,8 @@ export default function SellerDashboard() {
   const [loading, setLoading] = useState(true);
   const [showAddMedicine, setShowAddMedicine] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
+  const [activeTab, setActiveTab] = useState('medicines');
+  const [qrCodesCount, setQrCodesCount] = useState(0);
   const [selectedMedicine, setSelectedMedicine] = useState(null);
   const [showQRModal, setShowQRModal] = useState(false);
   const [qrBatchDetails, setQRBatchDetails] = useState('');
@@ -88,6 +90,15 @@ export default function SellerDashboard() {
           const medicinesData = await medicinesRes.json();
           setMedicines(medicinesData.data || []);
         }
+
+        // Fetch QR codes count
+        const historyRes = await fetch(`${API_BASE_URL}/seller/history`, {
+          headers: getAuthHeader(),
+        });
+        if (historyRes.ok) {
+          const historyData = await historyRes.json();
+          setQrCodesCount(historyData.total_qrs || 0);
+        }
       } catch (error) {
         toast({
           title: "Error",
@@ -121,9 +132,11 @@ export default function SellerDashboard() {
         throw new Error(errorData.error || 'Failed to add medicine');
       }
 
+      const resData = await response.json();
+
       toast({
         title: "Success",
-        description: "Medicine added successfully",
+        description: "Medicine added and QR Code generated!",
       });
 
       setMedicineForm({
@@ -141,6 +154,13 @@ export default function SellerDashboard() {
         manufacturer: '',
       });
       setShowAddMedicine(false);
+
+      // If auto-generated QR returned, show modal immediately
+      if (resData.qr) {
+        setSelectedMedicine(resData.data);
+        setGeneratedQR(resData.qr);
+        setShowQRModal(true);
+      }
 
       // Refresh medicines list
       const medicinesRes = await fetch(`${API_BASE_URL}/seller/medicine`, {
@@ -187,6 +207,7 @@ export default function SellerDashboard() {
       
       // Store the generated QR data
       setGeneratedQR(data.data);
+      setQrCodesCount(prev => prev + 1);
       
       toast({
         title: "Success",
@@ -377,7 +398,7 @@ export default function SellerDashboard() {
     totalMedicines: medicines.length,
     approvedMedicines: medicines.filter(m => m.approval_status === 'approved').length,
     pendingMedicines: medicines.filter(m => m.approval_status === 'pending').length,
-    totalQRCodes: 0, // Would need backend support
+    totalQRCodes: qrCodesCount,
   };
 
   return (
@@ -541,7 +562,7 @@ export default function SellerDashboard() {
                 <CardContent>
                   <p className="text-sm text-muted-foreground mb-4">Quickly add new medicines below or go to full database for advanced features</p>
                   <Button 
-                    onClick={() => document.getElementById('add-medicine-tab')?.click()}
+                    onClick={() => setActiveTab('add')}
                     variant="outline"
                     className="w-full"
                   >
@@ -552,7 +573,7 @@ export default function SellerDashboard() {
             </div>
 
             {/* Add Medicine and Manage Section */}
-            <Tabs defaultValue="medicines" className="w-full">
+            <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
               <TabsList className="grid w-full grid-cols-4">
                 <TabsTrigger value="medicines">
                   <Search className="h-4 w-4 mr-2" />

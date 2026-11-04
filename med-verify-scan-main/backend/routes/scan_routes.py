@@ -321,10 +321,10 @@ def scan_image():
                 if result:
                     medicine = dict(result)
 
-            # 4. Extract batch number from filename (e.g. F001_Crocin.png -> F001) or raw string
+            # 4. Extract batch number from filename (e.g. A007_Cephalexin.png -> A007, F001_Crocin.png -> F001)
             if not medicine and file and file.filename:
                 import re
-                batch_match = re.search(r'(F\d{3}|D\d{3})', file.filename, re.IGNORECASE)
+                batch_match = re.search(r'([A-Z]{1,3}\d{3,4})', file.filename, re.IGNORECASE)
                 if batch_match:
                     extracted_batch = batch_match.group(1).upper()
                     query = "SELECT * FROM medicines WHERE batch_no = %s LIMIT 1"
@@ -339,11 +339,12 @@ def scan_image():
                 if result:
                     medicine = dict(result)
 
-            # 6. Fallback: pick first medicine if demo scanning
-            if not medicine:
-                result = execute_query("SELECT * FROM medicines ORDER BY id ASC LIMIT 1", fetch_one=True)
-                if result:
-                    medicine = dict(result)
+            # 6. Fallback: match by medicine name inside filename if still not found
+            if not medicine and file and file.filename:
+                clean_name = os.path.splitext(file.filename)[0].replace('_', ' ')
+                res = execute_query("SELECT * FROM medicines WHERE LOWER(%s) LIKE '%' || LOWER(name) || '%' LIMIT 1", (clean_name,), fetch_one=True)
+                if res:
+                    medicine = dict(res)
 
             
             if medicine:
