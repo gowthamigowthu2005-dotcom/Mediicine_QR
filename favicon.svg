@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="none">
+  <defs>
+    <linearGradient id="medGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0ea5e9" />
+      <stop offset="100%" stop-color="#2563eb" />
+    </linearGradient>
+    <linearGradient id="accentGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#10b981" />
+      <stop offset="100%" stop-color="#059669" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Rounded Background -->
+  <rect width="32" height="32" rx="8" fill="url(#medGrad)" />
+  
+  <!-- Medical Shield/Cross Shape -->
+  <rect x="13" y="7" width="6" height="18" rx="2" fill="white" />
+  <rect x="7" y="13" width="18" height="6" rx="2" fill="white" />
+  
+  <!-- Verification / Shield Tick Accent -->
+  <circle cx="23" cy="23" r="6" fill="url(#accentGrad)" stroke="white" stroke-width="1.5" />
+  <path d="M20.5 23L22.2 24.7L25.5 21.3" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+</svg>
