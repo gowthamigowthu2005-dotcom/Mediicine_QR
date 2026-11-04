@@ -1,5 +1,6 @@
+import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { Shield, QrCode, Search, AlertTriangle, Sparkles } from "lucide-react";
+import { Shield, QrCode, Search, AlertTriangle, Sparkles, ShoppingBag } from "lucide-react";
 
 export const Hero = () => {
   const scrollToSection = (id) => {
@@ -35,24 +36,26 @@ export const Hero = () => {
           </p>
 
           {/* Action buttons */}
-          <div className="flex flex-col sm:flex-row gap-4 justify-center mb-16">
-            <Button
-              size="lg"
-              className="bg-gradient-to-r from-primary to-accent hover:shadow-medical transition-all duration-300 text-lg px-8 py-6"
-              onClick={() => scrollToSection("scanner")}
-            >
-              <QrCode className="mr-2 h-5 w-5" />
-              Scan Medicine QR Code
-            </Button>
-            <Button
-              variant="outline"
-              size="lg"
-              className="border-primary text-primary hover:bg-primary/5 text-lg px-8 py-6"
-              onClick={() => scrollToSection("database")}
-            >
-              <Search className="mr-2 h-5 w-5" />
-              Search Medicine Database
-            </Button>
+          <div className="flex flex-wrap gap-4 justify-center mb-16">
+            <Link to="/scan">
+              <Button
+                size="lg"
+                className="bg-gradient-to-r from-primary to-accent hover:shadow-medical transition-all duration-300 text-lg px-8 py-6"
+              >
+                <QrCode className="mr-2 h-5 w-5" />
+                Scan Medicine QR
+              </Button>
+            </Link>
+            <Link to="/seller/dashboard">
+              <Button
+                variant="outline"
+                size="lg"
+                className="border-primary text-primary hover:bg-primary/10 text-lg px-8 py-6"
+              >
+                <ShoppingBag className="mr-2 h-5 w-5" />
+                Seller Dashboard
+              </Button>
+            </Link>
             <Button
               variant="outline"
               size="lg"
@@ -60,7 +63,7 @@ export const Hero = () => {
               onClick={() => scrollToSection("ai-assistant")}
             >
               <Sparkles className="mr-2 h-5 w-5" />
-              AI Medicine Assistant
+              AI Assistant
             </Button>
           </div>
 

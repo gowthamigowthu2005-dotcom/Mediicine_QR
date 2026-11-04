@@ -172,6 +172,50 @@ export default function Login() {
             <Button type="submit" className="w-full" disabled={loading || showVerificationAlert}>
               {loading ? 'Logging in...' : 'Login'}
             </Button>
+
+            {/* Quick Demo Credentials */}
+            <div className="w-full pt-2 border-t text-xs text-muted-foreground">
+              <p className="font-semibold text-center mb-2 text-foreground">⚡ Quick Demo Login (Click to fill &amp; enter):</p>
+              <div className="grid grid-cols-3 gap-2">
+                <Button
+                  type="button"
+                  variant="outline"
+                  size="sm"
+                  className="text-xs h-8 border-blue-400 text-blue-600 hover:bg-blue-50"
+                  onClick={() => {
+                    setEmail('seller@medverify.com');
+                    setPassword('Seller@1234');
+                  }}
+                >
+                  🏪 Seller
+                </Button>
+                <Button
+                  type="button"
+                  variant="outline"
+                  size="sm"
+                  className="text-xs h-8 border-red-400 text-red-600 hover:bg-red-50"
+                  onClick={() => {
+                    setEmail('admin@medverify.com');
+                    setPassword('Admin@1234');
+                  }}
+                >
+                  🛡️ Admin
+                </Button>
+                <Button
+                  type="button"
+                  variant="outline"
+                  size="sm"
+                  className="text-xs h-8 border-green-400 text-green-600 hover:bg-green-50"
+                  onClick={() => {
+                    setEmail('user@medverify.com');
+                    setPassword('User@1234');
+                  }}
+                >
+                  👤 User
+                </Button>
+              </div>
+            </div>
+
             <div className="text-sm text-center text-muted-foreground">
               Don't have an account?{' '}
               <Link to="/register" className="text-primary hover:underline">

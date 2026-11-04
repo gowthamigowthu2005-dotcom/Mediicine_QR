@@ -210,6 +210,12 @@ export function Navigation() {
             </>
           ) : (
             <div className="flex items-center space-x-2">
+              <Link to="/seller/dashboard">
+                <Button variant="outline" size="sm" className="hidden sm:inline-flex border-blue-400 text-blue-600 hover:bg-blue-50">
+                  <ShoppingBag className="h-4 w-4 mr-1.5" />
+                  Seller Portal
+                </Button>
+              </Link>
               <Link to="/login">
                 <Button variant="ghost" size="sm">
                   Login

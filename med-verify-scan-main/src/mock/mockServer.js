@@ -299,10 +299,18 @@ export function setupMockServer() {
       // 3. SELLER ENDPOINTS
       // ==========================================
       if (pathname.includes('/seller/status')) {
+        const sellerObj = {
+          id: 'seller-profile-1',
+          status: 'approved',
+          is_approved: true,
+          company_name: 'MedVerify Official Pharma',
+          license_number: 'LIC-789012',
+        };
         return jsonResponse({
           status: 'approved',
           is_approved: true,
           company_name: 'MedVerify Official Pharma',
+          data: sellerObj,
         });
       }
 

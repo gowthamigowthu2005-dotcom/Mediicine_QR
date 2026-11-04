@@ -12,37 +12,43 @@ const Index = () => {
       icon: QrCode,
       title: "QR Code Scanning",
       description: "Scan medicine QR codes to instantly verify authenticity, expiry dates, and manufacturer details.",
-      status: "Coming Soon"
+      status: "Live",
+      link: "/scan"
     },
     {
       icon: Pill,
       title: "Medicine Database",
       description: "Access a comprehensive database of verified medicines with detailed information and tracking.",
-      status: "Coming Soon"
+      status: "Live",
+      link: "/scan"
     },
     {
       icon: Users,
-      title: "Seller Management",
-      description: "Pharmaceutical companies can register and manage their medicine inventory with secure authentication.",
-      status: "Coming Soon"
+      title: "Seller Dashboard",
+      description: "Pharmaceutical sellers can manage medicines, generate QR codes, and monitor inventory.",
+      status: "Live",
+      link: "/seller/dashboard"
     },
     {
       icon: TrendingUp,
       title: "Analytics Dashboard",
       description: "Track medicine distribution, verify authenticity rates, and monitor counterfeit incidents.",
-      status: "Coming Soon"
+      status: "Live",
+      link: "/admin/analytics"
     },
     {
       icon: Lock,
       title: "Blockchain Security",
-      description: "All medicines are verified and recorded on blockchain for tamper-proof authenticity.",
-      status: "Coming Soon"
+      description: "All medicines are verified and recorded cryptographically for tamper-proof authenticity.",
+      status: "Live",
+      link: "/admin/security"
     },
     {
       icon: AlertTriangle,
       title: "Counterfeit Detection",
       description: "AI-powered system detects counterfeit medicines with image analysis and pattern recognition.",
-      status: "Coming Soon"
+      status: "Live",
+      link: "/scan"
     }
   ];
 
@@ -84,20 +90,22 @@ const Index = () => {
             {features.map((feature, idx) => {
               const Icon = feature.icon;
               return (
-                <Card key={idx} className="hover:shadow-lg transition-shadow">
-                  <CardHeader>
-                    <div className="flex items-start justify-between mb-2">
-                      <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center">
-                        <Icon className="h-6 w-6 text-primary" />
+                <Link to={feature.link || "/login"} key={idx} className="block group">
+                  <Card className="h-full hover:shadow-lg transition-all border-border/60 hover:border-primary/50 group-hover:-translate-y-1 duration-200">
+                    <CardHeader>
+                      <div className="flex items-start justify-between mb-2">
+                        <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center group-hover:bg-primary/20 transition-colors">
+                          <Icon className="h-6 w-6 text-primary" />
+                        </div>
+                        <Badge variant="outline" className="text-primary border-primary/30">{feature.status}</Badge>
                       </div>
-                      <Badge variant="secondary">{feature.status}</Badge>
-                    </div>
-                    <CardTitle>{feature.title}</CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <p className="text-muted-foreground">{feature.description}</p>
-                  </CardContent>
-                </Card>
+                      <CardTitle className="group-hover:text-primary transition-colors">{feature.title}</CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                      <p className="text-muted-foreground">{feature.description}</p>
+                    </CardContent>
+                  </Card>
+                </Link>
               );
             })}
           </div>
@@ -139,40 +147,64 @@ const Index = () => {
             Join the revolution in pharmaceutical authentication and medicine safety
           </p>
           
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
-            <Card>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+            <Card className="hover:shadow-md transition-shadow">
               <CardHeader>
-                <CardTitle className="text-base">For Patients</CardTitle>
+                <CardTitle className="text-lg flex items-center justify-center gap-2">
+                  <User className="h-5 w-5 text-primary" />
+                  For Patients / Users
+                </CardTitle>
               </CardHeader>
               <CardContent className="space-y-4">
-                <p className="text-sm text-muted-foreground">Verify your medicines before use</p>
-                <Link to="/login">
-                  <Button className="w-full">Login to Verify</Button>
-                </Link>
+                <p className="text-sm text-muted-foreground">Verify your medicines and check safety instructions</p>
+                <div className="flex flex-col gap-2">
+                  <Link to="/scan">
+                    <Button className="w-full">Scan Medicine QR</Button>
+                  </Link>
+                  <Link to="/login">
+                    <Button variant="outline" className="w-full">User Login</Button>
+                  </Link>
+                </div>
               </CardContent>
             </Card>
 
-            <Card>
+            <Card className="hover:shadow-md transition-shadow border-primary/40">
               <CardHeader>
-                <CardTitle className="text-base">For Sellers</CardTitle>
+                <CardTitle className="text-lg flex items-center justify-center gap-2 text-primary">
+                  <Users className="h-5 w-5" />
+                  For Sellers
+                </CardTitle>
               </CardHeader>
               <CardContent className="space-y-4">
-                <p className="text-sm text-muted-foreground">Register your medicines and manage inventory</p>
-                <Link to="/register">
-                  <Button className="w-full">Register as Seller</Button>
-                </Link>
+                <p className="text-sm text-muted-foreground">Register medicines, generate QR codes & track inventory</p>
+                <div className="flex flex-col gap-2">
+                  <Link to="/seller/dashboard">
+                    <Button className="w-full bg-primary hover:bg-primary/90">Seller Dashboard</Button>
+                  </Link>
+                  <Link to="/login">
+                    <Button variant="outline" className="w-full">Seller Login</Button>
+                  </Link>
+                </div>
               </CardContent>
             </Card>
 
-            <Card>
+            <Card className="hover:shadow-md transition-shadow">
               <CardHeader>
-                <CardTitle className="text-base">For Admins</CardTitle>
+                <CardTitle className="text-lg flex items-center justify-center gap-2">
+                  <Lock className="h-5 w-5 text-accent" />
+                  For Admins
+                </CardTitle>
               </CardHeader>
               <CardContent className="space-y-4">
-                <p className="text-sm text-muted-foreground">Manage and verify pharmaceutical companies</p>
-                <Link to="/login">
-                  <Button className="w-full">Admin Login</Button>
-                </Link>
+                <p className="text-sm text-muted-foreground">Verify sellers, audit logs, and system analytics</p>
+                <div className="flex flex-col gap-2">
+                  <Link to="/admin/dashboard">
+                    <Button variant="default" className="w-full">Admin Dashboard</Button>
+                  </Link>
+                  <Link to="/login">
+                    <Button variant="outline" className="w-full">Admin Login</Button>
+                  </Link>
+                </div>
               </CardContent>
             </Card>
           </div>
