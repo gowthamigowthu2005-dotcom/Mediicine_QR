@@ -40,10 +40,6 @@ backend/.venv/
 .env.development
 backend/.env
 
-# QR Code outputs
+# QR Code outputs - keep db for Render deployment
 backend/qr_output/
-backend/database/local_medverify.db
-
-.env
-.env.local
-.env.production
+# backend/database/local_medverify.db  <-- included so Render has seed data

@@ -34,7 +34,7 @@ app.config['DATABASE_URL'] = os.getenv('DATABASE_URL')
 # Include the common Vite dev ports used by this project.
 cors_origins = os.getenv(
     'CORS_ORIGINS',
-    'http://localhost:5173,http://localhost:5174,http://localhost:3000,http://127.0.0.1:5173,http://127.0.0.1:5174'
+    'http://localhost:5173,http://localhost:5174,http://localhost:3000,http://127.0.0.1:5173,http://127.0.0.1:5174,https://gowthamigowthu2005-dotcom.github.io'
 ).split(',')
 CORS(app, origins=cors_origins, supports_credentials=True)
 
