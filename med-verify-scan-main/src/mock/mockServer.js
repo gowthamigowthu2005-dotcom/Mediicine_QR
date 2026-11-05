@@ -322,11 +322,12 @@ export function setupMockServer() {
       }
 
       if (pathname.includes('/seller/history')) {
+        const qrCount = (db.qr_codes && db.qr_codes.length > 0) ? db.qr_codes.length : 214;
         return jsonResponse({
-          total_qrs: 0,
+          total_qrs: qrCount,
           medicines: db.medicines,
           data: {
-            total_qrs: 0,
+            total_qrs: qrCount,
             history: db.medicines.slice(0, 20),
           },
         });
@@ -365,25 +366,70 @@ export function setupMockServer() {
         );
       }
 
-      if (pathname.includes('/seller/generate-qr') || pathname.includes('/seller/qr/generate') || pathname.includes('/qr/generate')) {
-        const qrId = `qr_${Date.now()}`;
+      if (
+        pathname.includes('/seller/issue-qr') ||
+        pathname.includes('/seller/generate-qr') ||
+        pathname.includes('/seller/qr/generate') ||
+        pathname.includes('/qr/generate')
+      ) {
+        const med = db.medicines.find((m) => m.id === body.medicine_id || m.batch_no === body.medicine_id) || db.medicines[0];
+        const qrId = `QR_${Date.now().toString().slice(-6)}`;
+        const qrPayloadObj = {
+          qr_id: qrId,
+          medicine_id: med.id,
+          name: med.name,
+          batch_no: med.batch_no,
+          mfg_date: med.mfg_date,
+          expiry_date: med.expiry_date,
+          dosage: med.dosage,
+          strength: med.strength,
+          category: med.category,
+          status: 'verified',
+        };
+        const qrPayloadStr = JSON.stringify(qrPayloadObj);
+        const qrImageUrl = `https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=${encodeURIComponent(qrPayloadStr)}`;
+
         const newQr = {
           id: qrId,
-          medicine_id: body.medicine_id || db.medicines[0]?.id,
-          batch_no: body.batch_no || db.medicines[0]?.batch_no || 'F001',
+          qr_id: qrId,
+          medicine_id: med.id,
+          medicine_name: med.name,
+          batch_no: med.batch_no,
+          mfg_date: med.mfg_date,
+          expiry_date: med.expiry_date,
+          qr_image: qrImageUrl,
+          payload: btoa(qrPayloadStr),
           created_at: new Date().toISOString(),
           revoked: false,
         };
         db.qr_codes = db.qr_codes || [];
         db.qr_codes.unshift(newQr);
         saveDb(db);
+
         return jsonResponse({
           message: 'QR code generated successfully',
           data: {
             qr_id: qrId,
-            qr_code: newQr,
-            qr_image: 'https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=' + encodeURIComponent(JSON.stringify(newQr)),
+            medicine_id: med.id,
+            medicine_name: med.name,
+            batch_no: med.batch_no,
+            expiry_date: med.expiry_date,
+            qr_image: qrImageUrl,
+            payload: btoa(qrPayloadStr),
           },
+        });
+      }
+
+      if (pathname.includes('/download')) {
+        // Return 1x1 transparent PNG data for downloads
+        const binaryString = atob('iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg==');
+        const bytes = new Uint8Array(binaryString.length);
+        for (let i = 0; i < binaryString.length; i++) {
+          bytes[i] = binaryString.charCodeAt(i);
+        }
+        return new Response(bytes, {
+          status: 200,
+          headers: { 'Content-Type': pathname.includes('pdf') ? 'application/pdf' : 'image/png' },
         });
       }
 
