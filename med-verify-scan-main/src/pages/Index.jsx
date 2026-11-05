@@ -4,7 +4,7 @@ import { QRScanner } from "@/components/QRScanner";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { QrCode, Users, Pill, TrendingUp, Lock, AlertTriangle, CheckCircle } from "lucide-react";
+import { QrCode, Users, User, Pill, TrendingUp, Lock, AlertTriangle, CheckCircle } from "lucide-react";
 import { Link } from "react-router-dom";
 
 const Index = () => {
