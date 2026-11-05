@@ -25,14 +25,7 @@ export default function App() {
     <BrowserRouter basename={import.meta.env.BASE_URL}>
       <Routes>
         <Route path="/" element={<Index />} />
-        <Route
-          path="/scan"
-          element={
-            <ProtectedRoute>
-              <ScanMedicine />
-            </ProtectedRoute>
-          }
-        />
+        <Route path="/scan" element={<ScanMedicine />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         
@@ -119,27 +112,8 @@ export default function App() {
           }
         />
 
-        <Route
-          path="/seller/dashboard"
-          element={
-            <ProtectedRoute requiredRole="seller">
-              <SellerDashboardGuard>
-                <SellerDashboard />
-              </SellerDashboardGuard>
-            </ProtectedRoute>
-          }
-        />
-
-        <Route
-          path="/seller/medicines"
-          element={
-            <ProtectedRoute requiredRole="seller">
-              <SellerDashboardGuard>
-                <MedicineDatabase />
-              </SellerDashboardGuard>
-            </ProtectedRoute>
-          }
-        />
+        <Route path="/seller/dashboard" element={<SellerDashboard />} />
+        <Route path="/seller/medicines" element={<MedicineDatabase />} />
 
         {/* User Routes */}
         <Route

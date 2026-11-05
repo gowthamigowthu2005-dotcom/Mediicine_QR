@@ -1,5 +1,6 @@
+import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { Shield, QrCode, Search, AlertTriangle, Sparkles } from "lucide-react";
+import { Shield, QrCode, Search, Sparkles, ShoppingBag } from "lucide-react";
 
 export const Hero = () => {
   const scrollToSection = (id) => {
@@ -35,7 +36,7 @@ export const Hero = () => {
           </p>
 
           {/* Action buttons */}
-          <div className="flex flex-col sm:flex-row gap-4 justify-center mb-16">
+          <div className="flex flex-wrap gap-4 justify-center mb-16">
             <Button
               size="lg"
               className="bg-gradient-to-r from-primary to-accent hover:shadow-medical transition-all duration-300 text-lg px-8 py-6"
@@ -53,6 +54,16 @@ export const Hero = () => {
               <Search className="mr-2 h-5 w-5" />
               Search Medicine Database
             </Button>
+            <Link to="/seller/dashboard">
+              <Button
+                variant="outline"
+                size="lg"
+                className="border-blue-600 text-blue-600 hover:bg-blue-50 text-lg px-8 py-6"
+              >
+                <ShoppingBag className="mr-2 h-5 w-5" />
+                Seller Dashboard
+              </Button>
+            </Link>
             <Button
               variant="outline"
               size="lg"
@@ -60,7 +71,7 @@ export const Hero = () => {
               onClick={() => scrollToSection("ai-assistant")}
             >
               <Sparkles className="mr-2 h-5 w-5" />
-              AI Medicine Assistant
+              AI Assistant
             </Button>
           </div>
 

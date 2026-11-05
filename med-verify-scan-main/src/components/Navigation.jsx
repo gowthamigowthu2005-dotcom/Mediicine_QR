@@ -110,12 +110,15 @@ export function Navigation() {
             <span>Home</span>
           </Link>
 
-          {isAuthenticated && (
-            <Link to="/scan" className="flex items-center space-x-1 text-sm font-medium text-primary hover:text-primary/80">
-              <QrCode className="h-4 w-4" />
-              <span>Scan Medicine</span>
-            </Link>
-          )}
+          <Link to="/seller/dashboard" className="flex items-center space-x-1 text-sm font-medium text-blue-600 hover:text-blue-700">
+            <ShoppingBag className="h-4 w-4" />
+            <span>Seller Dashboard</span>
+          </Link>
+
+          <Link to="/scan" className="flex items-center space-x-1 text-sm font-medium text-primary hover:text-primary/80">
+            <QrCode className="h-4 w-4" />
+            <span>Scan Medicine</span>
+          </Link>
 
           {isAuthenticated ? (
             <>

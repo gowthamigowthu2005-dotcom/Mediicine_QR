@@ -303,23 +303,30 @@ export function setupMockServer() {
           id: 'seller-profile-1',
           status: 'approved',
           is_approved: true,
-          company_name: 'MedVerify Official Pharma',
-          license_number: 'LIC-789012',
+          company_name: 'PharmaCorp Industries',
+          license_number: 'PHARM-2024-001',
+          email: 'seller@medverify.com',
+          phone: '+1 (555) 123-4567',
+          address: '123 Pharma Way, Medical District, Boston, MA 02115',
+          tax_id: 'XX-XXXXXXX',
+          registration_number: 'REG-2024-8899',
+          authorized_person: 'Dr. Robert Smith',
+          authorized_person_contact: '+1 (555) 123-4567',
         };
         return jsonResponse({
           status: 'approved',
           is_approved: true,
-          company_name: 'MedVerify Official Pharma',
+          company_name: 'PharmaCorp Industries',
           data: sellerObj,
         });
       }
 
       if (pathname.includes('/seller/history')) {
         return jsonResponse({
-          total_qrs: db.qr_codes?.length || 201,
+          total_qrs: 0,
           medicines: db.medicines,
           data: {
-            total_qrs: db.qr_codes?.length || 201,
+            total_qrs: 0,
             history: db.medicines.slice(0, 20),
           },
         });
