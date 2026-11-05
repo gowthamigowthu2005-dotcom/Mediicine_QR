@@ -1,5 +1,4 @@
 import React from 'react';
-import FloatingAIChat from './components/FloatingAIChat.jsx';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Index from './pages/Index.jsx';
 import Login from './pages/Login.jsx';
@@ -23,11 +22,17 @@ import { SellerDashboardGuard } from './components/SellerDashboardGuard.jsx';
 
 export default function App() {
   return (
-    <BrowserRouter basename={import.meta.env.BASE_URL}>
-
+    <BrowserRouter>
       <Routes>
         <Route path="/" element={<Index />} />
-        <Route path="/scan" element={<ScanMedicine />} />
+        <Route
+          path="/scan"
+          element={
+            <ProtectedRoute>
+              <ScanMedicine />
+            </ProtectedRoute>
+          }
+        />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         
@@ -148,9 +153,6 @@ export default function App() {
         
         <Route path="*" element={<NotFound />} />
       </Routes>
-
-      {/* AI Assistant — visible on all pages */}
-      <FloatingAIChat />
     </BrowserRouter>
   );
 }

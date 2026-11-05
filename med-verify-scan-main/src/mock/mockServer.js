@@ -1,6 +1,6 @@
 import seedData from './seedData.json';
 
-const STORAGE_KEY = 'medverify_mock_db_v1';
+const STORAGE_KEY = 'medverify_mock_db_v2';
 
 function getDb() {
   try {

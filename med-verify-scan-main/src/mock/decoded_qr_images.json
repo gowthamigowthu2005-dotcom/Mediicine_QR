@@ -1,0 +1,710 @@
+{
+  "8051f632-5791-42b0-bbdc-f7c8cac885aa": {
+    "qr_id": "8051f632-5791-42b0-bbdc-f7c8cac885aa",
+    "batch_no": "A004",
+    "file_name": "A004_Doxycycline_100mg_Capsule.png",
+    "medicine_name": "Doxycycline 100mg Capsule"
+  },
+  "68a31c8f-ec51-47a7-bb6e-fbe6b6d1ff68": {
+    "qr_id": "68a31c8f-ec51-47a7-bb6e-fbe6b6d1ff68",
+    "batch_no": "A005",
+    "file_name": "A005_Metronidazole_400mg_Tablet.png",
+    "medicine_name": "Metronidazole 400mg Tablet"
+  },
+  "6ff821ad-1f72-4006-952f-5a26a576509f": {
+    "qr_id": "6ff821ad-1f72-4006-952f-5a26a576509f",
+    "batch_no": "A007",
+    "file_name": "A007_Cephalexin_500mg_Capsule.png",
+    "medicine_name": "Cephalexin 500mg Capsule"
+  },
+  "999a6313-3dea-4162-a670-b947d4379eba": {
+    "qr_id": "999a6313-3dea-4162-a670-b947d4379eba",
+    "batch_no": "A009",
+    "file_name": "A009_Nitrofurantoin_100mg_Capsule.png",
+    "medicine_name": "Nitrofurantoin 100mg Capsule"
+  },
+  "19f7b452-240c-40fc-ac35-fbdeb77c2605": {
+    "qr_id": "19f7b452-240c-40fc-ac35-fbdeb77c2605",
+    "batch_no": "A012",
+    "file_name": "A012_Levofloxacin_500mg_Tablet.png",
+    "medicine_name": "Levofloxacin 500mg Tablet"
+  },
+  "f2ecf0d8-2f74-45b2-a19c-9dafabc743aa": {
+    "qr_id": "f2ecf0d8-2f74-45b2-a19c-9dafabc743aa",
+    "batch_no": "A014",
+    "file_name": "A014_Clarithromycin_500mg_Tablet.png",
+    "medicine_name": "Clarithromycin 500mg Tablet"
+  },
+  "927d4082-cee6-4ae0-8f26-41f90dca9170": {
+    "qr_id": "927d4082-cee6-4ae0-8f26-41f90dca9170",
+    "batch_no": "A015",
+    "file_name": "A015_Cefpodoxime_200mg_Tablet.png",
+    "medicine_name": "Cefpodoxime 200mg Tablet"
+  },
+  "27189a96-800a-4b17-bd45-ab49cf098f02": {
+    "qr_id": "27189a96-800a-4b17-bd45-ab49cf098f02",
+    "batch_no": "B002",
+    "file_name": "B002_Lisinopril_10mg_Tablet.png",
+    "medicine_name": "Lisinopril 10mg Tablet"
+  },
+  "e0ac5ee4-4359-4195-8d2f-7aa489dbf566": {
+    "qr_id": "e0ac5ee4-4359-4195-8d2f-7aa489dbf566",
+    "batch_no": "B004",
+    "file_name": "B004_Enalapril_5mg_Tablet.png",
+    "medicine_name": "Enalapril 5mg Tablet"
+  },
+  "fc09a53f-1145-4349-8722-af53eb849f84": {
+    "qr_id": "fc09a53f-1145-4349-8722-af53eb849f84",
+    "batch_no": "B006",
+    "file_name": "B006_Valsartan_80mg_Tablet.png",
+    "medicine_name": "Valsartan 80mg Tablet"
+  },
+  "3c8cff77-8e7b-4369-bbc8-3eb38865e120": {
+    "qr_id": "3c8cff77-8e7b-4369-bbc8-3eb38865e120",
+    "batch_no": "B007",
+    "file_name": "B007_Ramipril_5mg_Tablet.png",
+    "medicine_name": "Ramipril 5mg Tablet"
+  },
+  "fd573d94-6b7d-45d6-b6b7-95124f68a3f2": {
+    "qr_id": "fd573d94-6b7d-45d6-b6b7-95124f68a3f2",
+    "batch_no": "B008",
+    "file_name": "B008_Metoprolol_50mg_Tablet.png",
+    "medicine_name": "Metoprolol 50mg Tablet"
+  },
+  "0605d877-6a54-49f0-a50f-09bada46e080": {
+    "qr_id": "0605d877-6a54-49f0-a50f-09bada46e080",
+    "batch_no": "B009",
+    "file_name": "B009_Atenolol_50mg_Tablet.png",
+    "medicine_name": "Atenolol 50mg Tablet"
+  },
+  "70203883-20fe-4933-9fac-1d46b8dfff99": {
+    "qr_id": "70203883-20fe-4933-9fac-1d46b8dfff99",
+    "batch_no": "B012",
+    "file_name": "B012_Olmesartan_20mg_Tablet.png",
+    "medicine_name": "Olmesartan 20mg Tablet"
+  },
+  "f1068adc-bfac-4979-b2e5-d94786c6a621": {
+    "qr_id": "f1068adc-bfac-4979-b2e5-d94786c6a621",
+    "batch_no": "C001",
+    "file_name": "C001_Cough_DM_Syrup_100ml.png",
+    "medicine_name": "Cough DM Syrup 100ml"
+  },
+  "a91eda9f-6f2e-48cb-8c28-f939c0801c0a": {
+    "qr_id": "a91eda9f-6f2e-48cb-8c28-f939c0801c0a",
+    "batch_no": "C002",
+    "file_name": "C002_Cetirizine_10mg_Tablet.png",
+    "medicine_name": "Cetirizine 10mg Tablet"
+  },
+  "09279933-d6f3-4f3c-bf25-afb486d851a3": {
+    "qr_id": "09279933-d6f3-4f3c-bf25-afb486d851a3",
+    "batch_no": "C005",
+    "file_name": "C005_Loratadine_10mg_Tablet.png",
+    "medicine_name": "Loratadine 10mg Tablet"
+  },
+  "a90bfd76-8ede-42b4-a488-cbc105398636": {
+    "qr_id": "a90bfd76-8ede-42b4-a488-cbc105398636",
+    "batch_no": "C007",
+    "file_name": "C007_Bromhexine_8mg_Tablet.png",
+    "medicine_name": "Bromhexine 8mg Tablet"
+  },
+  "0f12d929-9998-4bb5-a78d-452c33ab5a79": {
+    "qr_id": "0f12d929-9998-4bb5-a78d-452c33ab5a79",
+    "batch_no": "C010",
+    "file_name": "C010_Guaifenesin_200mg_Tablet.png",
+    "medicine_name": "Guaifenesin 200mg Tablet"
+  },
+  "18667a28-93ee-44bd-877d-08255d6d5ddf": {
+    "qr_id": "18667a28-93ee-44bd-877d-08255d6d5ddf",
+    "batch_no": "D001",
+    "file_name": "D001_Glycomet_500mg_Tablet.png",
+    "medicine_name": "Glycomet 500mg Tablet"
+  },
+  "cfa518a9-70a6-495a-93e9-47c83c7b224e": {
+    "qr_id": "cfa518a9-70a6-495a-93e9-47c83c7b224e",
+    "batch_no": "D002",
+    "file_name": "D002_Amaryl_2mg_Tablet.png",
+    "medicine_name": "Amaryl 2mg Tablet"
+  },
+  "0363030f-d937-4c04-92b6-2416a05bb26a": {
+    "qr_id": "0363030f-d937-4c04-92b6-2416a05bb26a",
+    "batch_no": "D003",
+    "file_name": "D003_Januvia_100mg_Tablet.png",
+    "medicine_name": "Januvia 100mg Tablet"
+  },
+  "8883d974-801a-4a42-8cbe-0343399f4fd2": {
+    "qr_id": "8883d974-801a-4a42-8cbe-0343399f4fd2",
+    "batch_no": "D004",
+    "file_name": "D004_Voglibose_0.3mg_Tablet.png",
+    "medicine_name": "Voglibose 0.3mg Tablet"
+  },
+  "5a68dcac-9f83-4e50-ae9e-52715ac4d6ab": {
+    "qr_id": "5a68dcac-9f83-4e50-ae9e-52715ac4d6ab",
+    "batch_no": "D005",
+    "file_name": "D005_Galvus_50mg_Tablet.png",
+    "medicine_name": "Galvus 50mg Tablet"
+  },
+  "56484254-7792-4a3e-a518-025868409aba": {
+    "qr_id": "56484254-7792-4a3e-a518-025868409aba",
+    "batch_no": "D006",
+    "file_name": "D006_Jardiance_10mg_Tablet.png",
+    "medicine_name": "Jardiance 10mg Tablet"
+  },
+  "912a5dc0-1d46-419b-bbad-8690df5c547b": {
+    "qr_id": "912a5dc0-1d46-419b-bbad-8690df5c547b",
+    "batch_no": "D007",
+    "file_name": "D007_Forxiga_10mg_Tablet.png",
+    "medicine_name": "Forxiga 10mg Tablet"
+  },
+  "bd31cbcd-1e90-4c22-9696-3380f6876aee": {
+    "qr_id": "bd31cbcd-1e90-4c22-9696-3380f6876aee",
+    "batch_no": "D008",
+    "file_name": "D008_Trajenta_5mg_Tablet.png",
+    "medicine_name": "Trajenta 5mg Tablet"
+  },
+  "b9f708e9-42bb-4939-a32f-58932d2ed206": {
+    "qr_id": "b9f708e9-42bb-4939-a32f-58932d2ed206",
+    "batch_no": "D009",
+    "file_name": "D009_Insulin_Glargine_100U-ml.png",
+    "medicine_name": "Insulin Glargine 100U-ml"
+  },
+  "167b5344-4cb4-45fb-b874-3c7b922ac716": {
+    "qr_id": "167b5344-4cb4-45fb-b874-3c7b922ac716",
+    "batch_no": "D010",
+    "file_name": "D010_Pioglitazone_15mg_Tablet.png",
+    "medicine_name": "Pioglitazone 15mg Tablet"
+  },
+  "18b2768c-11c2-45a6-8ec8-3df4544c3756": {
+    "qr_id": "18b2768c-11c2-45a6-8ec8-3df4544c3756",
+    "batch_no": "D011",
+    "file_name": "D011_Glipizide_5mg_Tablet.png",
+    "medicine_name": "Glipizide 5mg Tablet"
+  },
+  "98cd3a2a-ae06-4737-9a1c-2bbf7f404d1c": {
+    "qr_id": "98cd3a2a-ae06-4737-9a1c-2bbf7f404d1c",
+    "batch_no": "D012",
+    "file_name": "D012_Teneligliptin_20mg_Tablet.png",
+    "medicine_name": "Teneligliptin 20mg Tablet"
+  },
+  "40b40c95-beb4-4857-b16e-4d4087f47f08": {
+    "qr_id": "40b40c95-beb4-4857-b16e-4d4087f47f08",
+    "batch_no": "D013",
+    "file_name": "D013_Repaglinide_0.5mg_Tablet.png",
+    "medicine_name": "Repaglinide 0.5mg Tablet"
+  },
+  "09da7295-1489-4f74-8390-ea335bcceeca": {
+    "qr_id": "09da7295-1489-4f74-8390-ea335bcceeca",
+    "batch_no": "D014",
+    "file_name": "D014_Acarbose_25mg_Tablet.png",
+    "medicine_name": "Acarbose 25mg Tablet"
+  },
+  "c5b9313b-17b8-4c3a-88a9-ab8efd9e3c0e": {
+    "qr_id": "c5b9313b-17b8-4c3a-88a9-ab8efd9e3c0e",
+    "batch_no": "E001",
+    "file_name": "E001_Ciprofloxacin_Eye_Drops_0.3pct.png",
+    "medicine_name": "Ciprofloxacin Eye Drops 0.3pct"
+  },
+  "86ab8b0d-2bde-46ed-874c-7b62c926be3c": {
+    "qr_id": "86ab8b0d-2bde-46ed-874c-7b62c926be3c",
+    "batch_no": "E003",
+    "file_name": "E003_Ofloxacin_Ear_Drops_0.3pct.png",
+    "medicine_name": "Ofloxacin Ear Drops 0.3pct"
+  },
+  "4207a5ad-6cad-455a-9373-4f9d0e4ee3a0": {
+    "qr_id": "4207a5ad-6cad-455a-9373-4f9d0e4ee3a0",
+    "batch_no": "E004",
+    "file_name": "E004_Xylometazoline_Nasal_Spray.png",
+    "medicine_name": "Xylometazoline Nasal Spray"
+  },
+  "2a476d05-4b6f-44e7-8184-4db21e4ef9ee": {
+    "qr_id": "2a476d05-4b6f-44e7-8184-4db21e4ef9ee",
+    "batch_no": "E005",
+    "file_name": "E005_Prednisolone_Eye_Drops_1pct.png",
+    "medicine_name": "Prednisolone Eye Drops 1pct"
+  },
+  "5866669d-171b-42ca-9bc4-5da78e585be3": {
+    "qr_id": "5866669d-171b-42ca-9bc4-5da78e585be3",
+    "batch_no": "F001",
+    "file_name": "F001_Crocin_500mg_Tablet.png",
+    "medicine_name": "Crocin 500mg Tablet"
+  },
+  "a947ef8d-5f76-4d62-913a-58db68e47d5a": {
+    "qr_id": "a947ef8d-5f76-4d62-913a-58db68e47d5a",
+    "batch_no": "F002",
+    "file_name": "F002_Dolo_650mg_Tablet.png",
+    "medicine_name": "Dolo 650mg Tablet"
+  },
+  "e4af212c-cf53-4acb-9220-6b105a62b5bf": {
+    "qr_id": "e4af212c-cf53-4acb-9220-6b105a62b5bf",
+    "batch_no": "F003",
+    "file_name": "F003_Ibuprofen_400mg_Tablet.png",
+    "medicine_name": "Ibuprofen 400mg Tablet"
+  },
+  "9ab09525-f032-4926-98a9-44ebf2dd8b0b": {
+    "qr_id": "9ab09525-f032-4926-98a9-44ebf2dd8b0b",
+    "batch_no": "F004",
+    "file_name": "F004_Meftal_500mg_Tablet.png",
+    "medicine_name": "Meftal 500mg Tablet"
+  },
+  "f429a067-cdec-4032-9efb-91de58bdb845": {
+    "qr_id": "f429a067-cdec-4032-9efb-91de58bdb845",
+    "batch_no": "F005",
+    "file_name": "F005_Combiflam_Tablet.png",
+    "medicine_name": "Combiflam Tablet"
+  },
+  "971b47f9-a5f0-4025-a59d-ba65db8b2bec": {
+    "qr_id": "971b47f9-a5f0-4025-a59d-ba65db8b2bec",
+    "batch_no": "F006",
+    "file_name": "F006_Nimesulide_100mg_Tablet.png",
+    "medicine_name": "Nimesulide 100mg Tablet"
+  },
+  "ebbe3343-7634-4e3d-9771-9f41a5b87267": {
+    "qr_id": "ebbe3343-7634-4e3d-9771-9f41a5b87267",
+    "batch_no": "F007",
+    "file_name": "F007_Aspirin_300mg_Tablet.png",
+    "medicine_name": "Aspirin 300mg Tablet"
+  },
+  "7929bcf3-f1d7-46a4-95d0-35a95f6153a5": {
+    "qr_id": "7929bcf3-f1d7-46a4-95d0-35a95f6153a5",
+    "batch_no": "F008",
+    "file_name": "F008_Calpol_Suspension_120mg-5ml.png",
+    "medicine_name": "Calpol Suspension 120mg-5ml"
+  },
+  "59acc640-fb6f-4d02-82e0-f5213a616e0e": {
+    "qr_id": "59acc640-fb6f-4d02-82e0-f5213a616e0e",
+    "batch_no": "F009",
+    "file_name": "F009_Nise_100mg_Tablet.png",
+    "medicine_name": "Nise 100mg Tablet"
+  },
+  "1c37b6a7-55a9-4c3b-8791-517a54d07996": {
+    "qr_id": "1c37b6a7-55a9-4c3b-8791-517a54d07996",
+    "batch_no": "F010",
+    "file_name": "F010_Brufen_400mg_Tablet.png",
+    "medicine_name": "Brufen 400mg Tablet"
+  },
+  "ec02664a-87a7-4b73-9989-429faf8eb500": {
+    "qr_id": "ec02664a-87a7-4b73-9989-429faf8eb500",
+    "batch_no": "F011",
+    "file_name": "F011_Paracip_500mg_Tablet.png",
+    "medicine_name": "Paracip 500mg Tablet"
+  },
+  "d2b41c41-583b-4ec3-b2a8-79ca44a42dbe": {
+    "qr_id": "d2b41c41-583b-4ec3-b2a8-79ca44a42dbe",
+    "batch_no": "F012",
+    "file_name": "F012_Sumo_Tablet.png",
+    "medicine_name": "Sumo Tablet"
+  },
+  "6f2e9960-c713-4be3-bba2-8e325f253512": {
+    "qr_id": "6f2e9960-c713-4be3-bba2-8e325f253512",
+    "batch_no": "F013",
+    "file_name": "F013_Fepanil_650mg_Tablet.png",
+    "medicine_name": "Fepanil 650mg Tablet"
+  },
+  "29e2ee33-5933-4aaa-98d0-e1f055443476": {
+    "qr_id": "29e2ee33-5933-4aaa-98d0-e1f055443476",
+    "batch_no": "F014",
+    "file_name": "F014_Metacin_500mg_Tablet.png",
+    "medicine_name": "Metacin 500mg Tablet"
+  },
+  "e521284b-01ac-49a3-98b9-68103e32fa3f": {
+    "qr_id": "e521284b-01ac-49a3-98b9-68103e32fa3f",
+    "batch_no": "F015",
+    "file_name": "F015_Voltaren_50mg_Tablet.png",
+    "medicine_name": "Voltaren 50mg Tablet"
+  },
+  "579f1c28-5aad-4ab7-a547-847a3a920e7a": {
+    "qr_id": "579f1c28-5aad-4ab7-a547-847a3a920e7a",
+    "batch_no": "G001",
+    "file_name": "G001_Omeprazole_20mg_Capsule.png",
+    "medicine_name": "Omeprazole 20mg Capsule"
+  },
+  "b197bcba-787d-46d4-9712-73aae9bd6dd5": {
+    "qr_id": "b197bcba-787d-46d4-9712-73aae9bd6dd5",
+    "batch_no": "G003",
+    "file_name": "G003_Domperidone_10mg_Tablet.png",
+    "medicine_name": "Domperidone 10mg Tablet"
+  },
+  "1b7fb6f8-cf28-446c-bed8-1f98b81b051f": {
+    "qr_id": "1b7fb6f8-cf28-446c-bed8-1f98b81b051f",
+    "batch_no": "G004",
+    "file_name": "G004_Ondansetron_4mg_Tablet.png",
+    "medicine_name": "Ondansetron 4mg Tablet"
+  },
+  "5f57f304-fbbe-469c-a00d-49e2f5585438": {
+    "qr_id": "5f57f304-fbbe-469c-a00d-49e2f5585438",
+    "batch_no": "G005",
+    "file_name": "G005_Ranitidine_150mg_Tablet.png",
+    "medicine_name": "Ranitidine 150mg Tablet"
+  },
+  "9ca4c26c-9004-4429-bea1-981afde48e57": {
+    "qr_id": "9ca4c26c-9004-4429-bea1-981afde48e57",
+    "batch_no": "G006",
+    "file_name": "G006_Loperamide_2mg_Tablet.png",
+    "medicine_name": "Loperamide 2mg Tablet"
+  },
+  "77b0e263-91a7-4278-88dd-22223bd73334": {
+    "qr_id": "77b0e263-91a7-4278-88dd-22223bd73334",
+    "batch_no": "G007",
+    "file_name": "G007_Lactulose_10g-15ml_Syrup.png",
+    "medicine_name": "Lactulose 10g-15ml Syrup"
+  },
+  "91d012be-e58a-48dd-9d68-30724d8800fb": {
+    "qr_id": "91d012be-e58a-48dd-9d68-30724d8800fb",
+    "batch_no": "G008",
+    "file_name": "G008_Rabeprazole_20mg_Tablet.png",
+    "medicine_name": "Rabeprazole 20mg Tablet"
+  },
+  "3bfda0c6-3ff1-416f-82b8-d8e168b12e41": {
+    "qr_id": "3bfda0c6-3ff1-416f-82b8-d8e168b12e41",
+    "batch_no": "G010",
+    "file_name": "G010_Esomeprazole_40mg_Capsule.png",
+    "medicine_name": "Esomeprazole 40mg Capsule"
+  },
+  "b4993b48-9645-439d-91ab-e72c8a51903d": {
+    "qr_id": "b4993b48-9645-439d-91ab-e72c8a51903d",
+    "batch_no": "H001",
+    "file_name": "H001_Aspirin_75mg_Tablet.png",
+    "medicine_name": "Aspirin 75mg Tablet"
+  },
+  "5893aec5-ad39-483a-849d-68a2a77ffa01": {
+    "qr_id": "5893aec5-ad39-483a-849d-68a2a77ffa01",
+    "batch_no": "H002",
+    "file_name": "H002_Atorvastatin_10mg_Tablet.png",
+    "medicine_name": "Atorvastatin 10mg Tablet"
+  },
+  "3d74dbc4-1c9e-42da-bf87-4c60cdcb8b99": {
+    "qr_id": "3d74dbc4-1c9e-42da-bf87-4c60cdcb8b99",
+    "batch_no": "H003",
+    "file_name": "H003_Clopidogrel_75mg_Tablet.png",
+    "medicine_name": "Clopidogrel 75mg Tablet"
+  },
+  "f8e61998-e34a-4872-960e-4b75f468bf33": {
+    "qr_id": "f8e61998-e34a-4872-960e-4b75f468bf33",
+    "batch_no": "H004",
+    "file_name": "H004_Rosuvastatin_10mg_Tablet.png",
+    "medicine_name": "Rosuvastatin 10mg Tablet"
+  },
+  "417e430c-8826-44fe-b222-73fea0190a9a": {
+    "qr_id": "417e430c-8826-44fe-b222-73fea0190a9a",
+    "batch_no": "H005",
+    "file_name": "H005_Digoxin_0.25mg_Tablet.png",
+    "medicine_name": "Digoxin 0.25mg Tablet"
+  },
+  "4079d9fa-3068-4101-a64f-d407a94a32b3": {
+    "qr_id": "4079d9fa-3068-4101-a64f-d407a94a32b3",
+    "batch_no": "H006",
+    "file_name": "H006_Carvedilol_6.25mg_Tablet.png",
+    "medicine_name": "Carvedilol 6.25mg Tablet"
+  },
+  "f51d37d0-a671-404f-b6e0-5962658814cb": {
+    "qr_id": "f51d37d0-a671-404f-b6e0-5962658814cb",
+    "batch_no": "H008",
+    "file_name": "H008_Warfarin_5mg_Tablet.png",
+    "medicine_name": "Warfarin 5mg Tablet"
+  },
+  "d714341a-14d5-4676-8207-d14e1fe78971": {
+    "qr_id": "d714341a-14d5-4676-8207-d14e1fe78971",
+    "batch_no": "H009",
+    "file_name": "H009_Nitroglycerin_0.5mg_Tablet.png",
+    "medicine_name": "Nitroglycerin 0.5mg Tablet"
+  },
+  "fbb8c7c8-8093-4a54-ba26-0fda4b4e830b": {
+    "qr_id": "fbb8c7c8-8093-4a54-ba26-0fda4b4e830b",
+    "batch_no": "H010",
+    "file_name": "H010_Isosorbide_20mg_Tablet.png",
+    "medicine_name": "Isosorbide 20mg Tablet"
+  },
+  "3fa45114-1898-4813-8f59-5570247ac737": {
+    "qr_id": "3fa45114-1898-4813-8f59-5570247ac737",
+    "batch_no": "H011",
+    "file_name": "H011_Simvastatin_20mg_Tablet.png",
+    "medicine_name": "Simvastatin 20mg Tablet"
+  },
+  "28684e33-c6ab-4ac3-9ce3-86bb2f507572": {
+    "qr_id": "28684e33-c6ab-4ac3-9ce3-86bb2f507572",
+    "batch_no": "H012",
+    "file_name": "H012_Amiodarone_200mg_Tablet.png",
+    "medicine_name": "Amiodarone 200mg Tablet"
+  },
+  "72548be0-e9d5-4dd7-8e67-81b48b7fdd52": {
+    "qr_id": "72548be0-e9d5-4dd7-8e67-81b48b7fdd52",
+    "batch_no": "H013",
+    "file_name": "H013_Spironolactone_25mg_Tablet.png",
+    "medicine_name": "Spironolactone 25mg Tablet"
+  },
+  "264b2043-d5f2-46c6-86b3-a556b57f68f3": {
+    "qr_id": "264b2043-d5f2-46c6-86b3-a556b57f68f3",
+    "batch_no": "H014",
+    "file_name": "H014_Furosemide_40mg_Tablet.png",
+    "medicine_name": "Furosemide 40mg Tablet"
+  },
+  "0c0f830d-2963-40a5-94c6-154f326661fb": {
+    "qr_id": "0c0f830d-2963-40a5-94c6-154f326661fb",
+    "batch_no": "H015",
+    "file_name": "H015_Ezetimibe_10mg_Tablet.png",
+    "medicine_name": "Ezetimibe 10mg Tablet"
+  },
+  "07a86ba9-f251-4a7e-a54b-30005d6efa57": {
+    "qr_id": "07a86ba9-f251-4a7e-a54b-30005d6efa57",
+    "batch_no": "M001",
+    "file_name": "M001_Sertraline_50mg_Tablet.png",
+    "medicine_name": "Sertraline 50mg Tablet"
+  },
+  "e64cda13-e699-43b2-8558-8a12619503dc": {
+    "qr_id": "e64cda13-e699-43b2-8558-8a12619503dc",
+    "batch_no": "M004",
+    "file_name": "M004_Alprazolam_0.5mg_Tablet.png",
+    "medicine_name": "Alprazolam 0.5mg Tablet"
+  },
+  "1ecf84eb-c59a-406d-851e-e78ae0cbb259": {
+    "qr_id": "1ecf84eb-c59a-406d-851e-e78ae0cbb259",
+    "batch_no": "M005",
+    "file_name": "M005_Clonazepam_0.5mg_Tablet.png",
+    "medicine_name": "Clonazepam 0.5mg Tablet"
+  },
+  "627f3ba5-a1d6-4565-a90e-6248ddd307a0": {
+    "qr_id": "627f3ba5-a1d6-4565-a90e-6248ddd307a0",
+    "batch_no": "M006",
+    "file_name": "M006_Olanzapine_5mg_Tablet.png",
+    "medicine_name": "Olanzapine 5mg Tablet"
+  },
+  "cdf97b54-4497-415f-a8c6-f378bc07043b": {
+    "qr_id": "cdf97b54-4497-415f-a8c6-f378bc07043b",
+    "batch_no": "M009",
+    "file_name": "M009_Paroxetine_20mg_Tablet.png",
+    "medicine_name": "Paroxetine 20mg Tablet"
+  },
+  "856cfe0a-183d-48c5-8834-90899102895e": {
+    "qr_id": "856cfe0a-183d-48c5-8834-90899102895e",
+    "batch_no": "MED-A001",
+    "file_name": "MED-A001_Amoxicillin_500mg_Capsule.png",
+    "medicine_name": "Amoxicillin 500mg Capsule"
+  },
+  "109c2e28-e92e-43f2-81a0-364e70a433ce": {
+    "qr_id": "109c2e28-e92e-43f2-81a0-364e70a433ce",
+    "batch_no": "MED-A002",
+    "file_name": "MED-A002_Azithromycin_500mg_Tablet.png",
+    "medicine_name": "Azithromycin 500mg Tablet"
+  },
+  "45e2a144-f4ff-4ba1-a12a-0aa435a227e9": {
+    "qr_id": "45e2a144-f4ff-4ba1-a12a-0aa435a227e9",
+    "batch_no": "MED-A003",
+    "file_name": "MED-A003_Ciprofloxacin_500mg_Tablet.png",
+    "medicine_name": "Ciprofloxacin 500mg Tablet"
+  },
+  "670076c8-6ab9-452c-a163-1fc284a73a6a": {
+    "qr_id": "670076c8-6ab9-452c-a163-1fc284a73a6a",
+    "batch_no": "MED-B001",
+    "file_name": "MED-B001_Amlodipine_5mg_Tablet.png",
+    "medicine_name": "Amlodipine 5mg Tablet"
+  },
+  "aa185997-66af-4e4d-9ed9-85a997e59fd3": {
+    "qr_id": "aa185997-66af-4e4d-9ed9-85a997e59fd3",
+    "batch_no": "MED-B002",
+    "file_name": "MED-B002_Lisinopril_10mg_Tablet.png",
+    "medicine_name": "Lisinopril 10mg Tablet"
+  },
+  "f17600d2-4534-4af4-bba1-08d86752fe93": {
+    "qr_id": "f17600d2-4534-4af4-bba1-08d86752fe93",
+    "batch_no": "MED-B003",
+    "file_name": "MED-B003_Telmisartan_40mg_Tablet.png",
+    "medicine_name": "Telmisartan 40mg Tablet"
+  },
+  "50502f02-5972-42b0-815d-a3eba0a329e2": {
+    "qr_id": "50502f02-5972-42b0-815d-a3eba0a329e2",
+    "batch_no": "MED-C001",
+    "file_name": "MED-C001_Cough_DM_Syrup_100ml.png",
+    "medicine_name": "Cough DM Syrup 100ml"
+  },
+  "86b21bcb-6ee1-40a6-b6fe-99f88b787d6b": {
+    "qr_id": "86b21bcb-6ee1-40a6-b6fe-99f88b787d6b",
+    "batch_no": "MED-C002",
+    "file_name": "MED-C002_Cetirizine_10mg_Tablet.png",
+    "medicine_name": "Cetirizine 10mg Tablet"
+  },
+  "e10d77ea-d0d1-4823-9265-ebe9426cf2b0": {
+    "qr_id": "e10d77ea-d0d1-4823-9265-ebe9426cf2b0",
+    "batch_no": "MED-D001",
+    "file_name": "MED-D001_Glycomet_500mg_Tablet.png",
+    "medicine_name": "Glycomet 500mg Tablet"
+  },
+  "af7c7ed4-0b14-498b-9598-2d901606495b": {
+    "qr_id": "af7c7ed4-0b14-498b-9598-2d901606495b",
+    "batch_no": "MED-D002",
+    "file_name": "MED-D002_Amaryl_2mg_Tablet.png",
+    "medicine_name": "Amaryl 2mg Tablet"
+  },
+  "54260c1d-007d-4b2d-a8ec-c9ac3d9fdb91": {
+    "qr_id": "54260c1d-007d-4b2d-a8ec-c9ac3d9fdb91",
+    "batch_no": "MED-D003",
+    "file_name": "MED-D003_Januvia_100mg_Tablet.png",
+    "medicine_name": "Januvia 100mg Tablet"
+  },
+  "eb98292c-2426-4e44-9ac1-ff99d0154dfa": {
+    "qr_id": "eb98292c-2426-4e44-9ac1-ff99d0154dfa",
+    "batch_no": "MED-D004",
+    "file_name": "MED-D004_Voglibose_0.3mg_Tablet.png",
+    "medicine_name": "Voglibose 0.3mg Tablet"
+  },
+  "64d9245e-b377-4796-b905-dadf67bfc4b0": {
+    "qr_id": "64d9245e-b377-4796-b905-dadf67bfc4b0",
+    "batch_no": "MED-F001",
+    "file_name": "MED-F001_Crocin_500mg_Tablet.png",
+    "medicine_name": "Crocin 500mg Tablet"
+  },
+  "4b6d7f8c-0e44-42dc-b94d-9bc5469f5f1f": {
+    "qr_id": "4b6d7f8c-0e44-42dc-b94d-9bc5469f5f1f",
+    "batch_no": "MED-F002",
+    "file_name": "MED-F002_Dolo_650mg_Tablet.png",
+    "medicine_name": "Dolo 650mg Tablet"
+  },
+  "0ab61aff-57c3-48dc-ac07-09d31938cd17": {
+    "qr_id": "0ab61aff-57c3-48dc-ac07-09d31938cd17",
+    "batch_no": "MED-F003",
+    "file_name": "MED-F003_Ibuprofen_400mg_Tablet.png",
+    "medicine_name": "Ibuprofen 400mg Tablet"
+  },
+  "35ca30ac-4095-4a20-9dfb-de5c6a881dbd": {
+    "qr_id": "35ca30ac-4095-4a20-9dfb-de5c6a881dbd",
+    "batch_no": "MED-F004",
+    "file_name": "MED-F004_Meftal_500mg_Tablet.png",
+    "medicine_name": "Meftal 500mg Tablet"
+  },
+  "3d9279b6-db87-4429-b173-cda598618e88": {
+    "qr_id": "3d9279b6-db87-4429-b173-cda598618e88",
+    "batch_no": "MED-H001",
+    "file_name": "MED-H001_Aspirin_75mg_Tablet.png",
+    "medicine_name": "Aspirin 75mg Tablet"
+  },
+  "d898c2e1-e0dd-4c7d-9c42-4e23cbe9abcb": {
+    "qr_id": "d898c2e1-e0dd-4c7d-9c42-4e23cbe9abcb",
+    "batch_no": "MED-H002",
+    "file_name": "MED-H002_Atorvastatin_10mg_Tablet.png",
+    "medicine_name": "Atorvastatin 10mg Tablet"
+  },
+  "a0f7e17b-6cbf-45be-8670-98fbe9a7cd93": {
+    "qr_id": "a0f7e17b-6cbf-45be-8670-98fbe9a7cd93",
+    "batch_no": "MED-H003",
+    "file_name": "MED-H003_Clopidogrel_75mg_Tablet.png",
+    "medicine_name": "Clopidogrel 75mg Tablet"
+  },
+  "9b733f2f-1eed-458e-96ed-379b8b91013f": {
+    "qr_id": "9b733f2f-1eed-458e-96ed-379b8b91013f",
+    "batch_no": "P001",
+    "file_name": "P001_Tramadol_50mg_Capsule.png",
+    "medicine_name": "Tramadol 50mg Capsule"
+  },
+  "b2acc9c8-22d4-49b3-9079-eda5352dd30e": {
+    "qr_id": "b2acc9c8-22d4-49b3-9079-eda5352dd30e",
+    "batch_no": "P002",
+    "file_name": "P002_Diclofenac_50mg_Tablet.png",
+    "medicine_name": "Diclofenac 50mg Tablet"
+  },
+  "34dffe46-ffe1-48f1-9d2d-790de86d66dc": {
+    "qr_id": "34dffe46-ffe1-48f1-9d2d-790de86d66dc",
+    "batch_no": "P003",
+    "file_name": "P003_Naproxen_500mg_Tablet.png",
+    "medicine_name": "Naproxen 500mg Tablet"
+  },
+  "8e466167-54e5-403e-a49e-4c07e085abb8": {
+    "qr_id": "8e466167-54e5-403e-a49e-4c07e085abb8",
+    "batch_no": "P004",
+    "file_name": "P004_Piroxicam_20mg_Capsule.png",
+    "medicine_name": "Piroxicam 20mg Capsule"
+  },
+  "7aa3c95d-9605-46bb-97c9-4d383cb524a6": {
+    "qr_id": "7aa3c95d-9605-46bb-97c9-4d383cb524a6",
+    "batch_no": "P005",
+    "file_name": "P005_Ketorolac_10mg_Tablet.png",
+    "medicine_name": "Ketorolac 10mg Tablet"
+  },
+  "54a0f581-add7-47c6-b61f-0fab08aea0c8": {
+    "qr_id": "54a0f581-add7-47c6-b61f-0fab08aea0c8",
+    "batch_no": "P006",
+    "file_name": "P006_Pregabalin_75mg_Capsule.png",
+    "medicine_name": "Pregabalin 75mg Capsule"
+  },
+  "262906a5-8bbf-452f-951c-b819af35279e": {
+    "qr_id": "262906a5-8bbf-452f-951c-b819af35279e",
+    "batch_no": "P009",
+    "file_name": "P009_Etoricoxib_60mg_Tablet.png",
+    "medicine_name": "Etoricoxib 60mg Tablet"
+  },
+  "e4440ad0-4734-4545-9b18-40560523cd1a": {
+    "qr_id": "e4440ad0-4734-4545-9b18-40560523cd1a",
+    "batch_no": "SK001",
+    "file_name": "SK001_Betamethasone_0.1pct_Cream.png",
+    "medicine_name": "Betamethasone 0.1pct Cream"
+  },
+  "00d0f0c3-6a1f-404c-b276-a58fb1a3ae22": {
+    "qr_id": "00d0f0c3-6a1f-404c-b276-a58fb1a3ae22",
+    "batch_no": "SK004",
+    "file_name": "SK004_Hydrocortisone_1pct_Cream.png",
+    "medicine_name": "Hydrocortisone 1pct Cream"
+  },
+  "e8f9845d-f50e-4716-ad19-96abd4e699dc": {
+    "qr_id": "e8f9845d-f50e-4716-ad19-96abd4e699dc",
+    "batch_no": "T002",
+    "file_name": "T002_Levothyroxine_100mcg_Tablet.png",
+    "medicine_name": "Levothyroxine 100mcg Tablet"
+  },
+  "a06b06a7-9933-4ac7-b900-cfd155354569": {
+    "qr_id": "a06b06a7-9933-4ac7-b900-cfd155354569",
+    "batch_no": "T004",
+    "file_name": "T004_Propylthiouracil_50mg_Tablet.png",
+    "medicine_name": "Propylthiouracil 50mg Tablet"
+  },
+  "facf01c4-5145-4ea6-9169-9bca635f656c": {
+    "qr_id": "facf01c4-5145-4ea6-9169-9bca635f656c",
+    "batch_no": "T005",
+    "file_name": "T005_Liothyronine_25mcg_Tablet.png",
+    "medicine_name": "Liothyronine 25mcg Tablet"
+  },
+  "9001862f-af20-4256-975f-5a2836ffd24f": {
+    "qr_id": "9001862f-af20-4256-975f-5a2836ffd24f",
+    "batch_no": "V002",
+    "file_name": "V002_Vitamin_D3_60000_IU_Capsule.png",
+    "medicine_name": "Vitamin D3 60000 IU Capsule"
+  },
+  "042f51af-0473-471e-a1e0-9b98cdb5156e": {
+    "qr_id": "042f51af-0473-471e-a1e0-9b98cdb5156e",
+    "batch_no": "V003",
+    "file_name": "V003_B-Complex_Tablet.png",
+    "medicine_name": "B-Complex Tablet"
+  },
+  "20b3cbd0-4d68-4c66-bdca-ce283a459d4b": {
+    "qr_id": "20b3cbd0-4d68-4c66-bdca-ce283a459d4b",
+    "batch_no": "V005",
+    "file_name": "V005_Iron_150mg_Capsule.png",
+    "medicine_name": "Iron 150mg Capsule"
+  },
+  "04ff428b-b951-4981-a10b-57cc3b4726c3": {
+    "qr_id": "04ff428b-b951-4981-a10b-57cc3b4726c3",
+    "batch_no": "V006",
+    "file_name": "V006_Calcium_500mg_Tablet.png",
+    "medicine_name": "Calcium 500mg Tablet"
+  },
+  "107e8a90-a802-4081-a84f-5008098c0cf1": {
+    "qr_id": "107e8a90-a802-4081-a84f-5008098c0cf1",
+    "batch_no": "V009",
+    "file_name": "V009_Magnesium_250mg_Tablet.png",
+    "medicine_name": "Magnesium 250mg Tablet"
+  },
+  "1f198554-2289-4772-92e9-edcbad9739f9": {
+    "qr_id": "1f198554-2289-4772-92e9-edcbad9739f9",
+    "batch_no": "V011",
+    "file_name": "V011_Biotin_10mg_Tablet.png",
+    "medicine_name": "Biotin 10mg Tablet"
+  },
+  "16fe7547-e0d1-4f33-bc3a-25b7690466a1": {
+    "qr_id": "16fe7547-e0d1-4f33-bc3a-25b7690466a1",
+    "batch_no": "V015",
+    "file_name": "V015_Selenium_200mcg_Tablet.png",
+    "medicine_name": "Selenium 200mcg Tablet"
+  },
+  "90432d8b-0138-4427-a4dc-f632335921ed": {
+    "qr_id": "90432d8b-0138-4427-a4dc-f632335921ed",
+    "batch_no": "D002",
+    "file_name": "D002_Amaryl_2mg_Tablet.png",
+    "medicine_name": "Amaryl 2mg Tablet"
+  }
+}
