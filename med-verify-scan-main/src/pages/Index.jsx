@@ -1,5 +1,9 @@
 import { Hero } from "@/components/Hero";
 import { Navigation } from "@/components/Navigation";
+import { QRScanner } from "@/components/QRScanner";
+import { MedicineDatabase } from "@/components/MedicineDatabase";
+import { AIMedicineAssistant } from "@/components/AIMedicineAssistant";
+import FloatingAIChat from "@/components/FloatingAIChat";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -12,37 +16,37 @@ const Index = () => {
       icon: QrCode,
       title: "QR Code Scanning",
       description: "Scan medicine QR codes to instantly verify authenticity, expiry dates, and manufacturer details.",
-      status: "Coming Soon"
+      status: "Active"
     },
     {
       icon: Pill,
       title: "Medicine Database",
       description: "Access a comprehensive database of verified medicines with detailed information and tracking.",
-      status: "Coming Soon"
+      status: "Active"
     },
     {
       icon: Users,
       title: "Seller Management",
       description: "Pharmaceutical companies can register and manage their medicine inventory with secure authentication.",
-      status: "Coming Soon"
+      status: "Active"
     },
     {
       icon: TrendingUp,
       title: "Analytics Dashboard",
       description: "Track medicine distribution, verify authenticity rates, and monitor counterfeit incidents.",
-      status: "Coming Soon"
+      status: "Active"
     },
     {
       icon: Lock,
       title: "Blockchain Security",
       description: "All medicines are verified and recorded on blockchain for tamper-proof authenticity.",
-      status: "Coming Soon"
+      status: "Active"
     },
     {
       icon: AlertTriangle,
       title: "Counterfeit Detection",
       description: "AI-powered system detects counterfeit medicines with image analysis and pattern recognition.",
-      status: "Coming Soon"
+      status: "Active"
     }
   ];
 
@@ -68,6 +72,39 @@ const Index = () => {
     <main className="min-h-screen bg-background">
       <Navigation />
       <Hero />
+
+      {/* 1. Live QR Scanner Section */}
+      <section id="scanner" className="py-12 bg-card/30 border-y">
+        <QRScanner />
+      </section>
+
+      {/* 2. Medicine Database Section */}
+      <section id="database" className="py-16">
+        <div className="container mx-auto px-4 max-w-6xl">
+          <div className="text-center mb-10">
+            <Badge className="mb-3">Medicine Catalog</Badge>
+            <h2 className="text-4xl font-bold mb-3">Explore Medicine Database</h2>
+            <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
+              Search authentic medications, verify batch numbers, strengths, and expiry details
+            </p>
+          </div>
+          <MedicineDatabase />
+        </div>
+      </section>
+
+      {/* 3. AI Medicine Assistant Section */}
+      <section id="ai-assistant" className="py-16 bg-secondary/10 border-y">
+        <div className="container mx-auto px-4 max-w-5xl">
+          <div className="text-center mb-10">
+            <Badge className="mb-3 bg-purple-100 text-purple-800 border-purple-200">AI Assistant</Badge>
+            <h2 className="text-4xl font-bold mb-3">AI Medicine Assistant</h2>
+            <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
+              Ask questions about medicine usages, dosages, side effects, and precautions
+            </p>
+          </div>
+          <AIMedicineAssistant />
+        </div>
+      </section>
       
       {/* Features Showcase Section */}
       <section className="py-20 px-4 bg-gradient-to-b from-background to-secondary/5">
@@ -182,6 +219,9 @@ const Index = () => {
           </p>
         </div>
       </section>
+
+      {/* Floating AI Chat Assistant */}
+      <FloatingAIChat />
     </main>
   );
 };
