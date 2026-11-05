@@ -49,15 +49,16 @@ export const Hero = () => {
               <QrCode className="mr-2 h-5 w-5" />
               Scan Medicine QR Code
             </Button>
-            <Button
-              variant="outline"
-              size="lg"
-              className="border-primary text-primary hover:bg-primary/5 text-lg px-8 py-6"
-              onClick={() => scrollToSection("database")}
-            >
-              <Search className="mr-2 h-5 w-5" />
-              Search Medicine Database
-            </Button>
+            <Link to="/seller/medicines">
+              <Button
+                variant="outline"
+                size="lg"
+                className="border-primary text-primary hover:bg-primary/5 text-lg px-8 py-6"
+              >
+                <Search className="mr-2 h-5 w-5" />
+                Search Medicine Database
+              </Button>
+            </Link>
             <Link to="/seller/dashboard">
               <Button
                 variant="outline"
@@ -68,15 +69,16 @@ export const Hero = () => {
                 Seller Dashboard
               </Button>
             </Link>
-            <Button
-              variant="outline"
-              size="lg"
-              className="border-purple-500 text-purple-600 hover:bg-purple-50 text-lg px-8 py-6"
-              onClick={() => scrollToSection("ai-assistant")}
-            >
-              <Sparkles className="mr-2 h-5 w-5" />
-              AI Assistant
-            </Button>
+            <Link to="/scan">
+              <Button
+                variant="outline"
+                size="lg"
+                className="border-purple-500 text-purple-600 hover:bg-purple-50 text-lg px-8 py-6"
+              >
+                <QrCode className="mr-2 h-5 w-5" />
+                Scanner Page
+              </Button>
+            </Link>
           </div>
 
           {/* Feature highlights */}
