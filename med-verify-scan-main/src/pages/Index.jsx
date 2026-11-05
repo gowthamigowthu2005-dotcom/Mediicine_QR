@@ -1,5 +1,6 @@
 import { Hero } from "@/components/Hero";
 import { Navigation } from "@/components/Navigation";
+import { QRScanner } from "@/components/QRScanner";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -74,6 +75,9 @@ const Index = () => {
     <main className="min-h-screen bg-background">
       <Navigation />
       <Hero />
+
+      {/* Embedded Live Scanner Section */}
+      <QRScanner />
       
       {/* Features Showcase Section */}
       <section className="py-20 px-4 bg-gradient-to-b from-background to-secondary/5">

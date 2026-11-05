@@ -27,14 +27,7 @@ export default function App() {
 
       <Routes>
         <Route path="/" element={<Index />} />
-        <Route
-          path="/scan"
-          element={
-            <ProtectedRoute>
-              <ScanMedicine />
-            </ProtectedRoute>
-          }
-        />
+        <Route path="/scan" element={<ScanMedicine />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         

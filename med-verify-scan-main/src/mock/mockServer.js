@@ -384,60 +384,94 @@ export function setupMockServer() {
       // 4. SCAN & VERIFICATION ENDPOINTS
       // ==========================================
       if (pathname.includes('/scan/batch/')) {
-        const batchNo = decodeURIComponent(pathname.split('/scan/batch/')[1] || '').toUpperCase();
-        const med = db.medicines.find((m) => m.batch_no?.toUpperCase() === batchNo) || db.medicines[0];
-        const isApproved = med && med.approval_status === 'approved';
+        const batchNo = decodeURIComponent(pathname.split('/scan/batch/')[1] || '').trim().toUpperCase();
+        let med = db.medicines.find((m) => m.batch_no?.trim().toUpperCase() === batchNo);
+
+        if (!med) {
+          // Check by medicine ID or partial name
+          med = db.medicines.find((m) => m.id === batchNo || m.name?.toUpperCase().includes(batchNo));
+        }
+
+        if (!med) {
+          return jsonResponse({
+            error: `No registered medicine found for batch or code: ${batchNo}`,
+            data: {
+              verified: false,
+              result: 'counterfeit',
+              status: 'counterfeit',
+              medicine: { name: 'Unknown Medicine', batch_no: batchNo }
+            }
+          }, 404);
+        }
+
+        const isApproved = med.approval_status === 'approved';
+        const statusStr = isApproved ? 'verified' : (med.approval_status === 'pending' ? 'pending' : 'rejected');
 
         return jsonResponse({
-          message: isApproved ? 'Medicine verified' : 'Medicine unverified',
+          message: isApproved ? 'Medicine verified' : `Medicine status: ${statusStr.toUpperCase()}`,
           data: {
             verified: isApproved,
-            result: isApproved ? 'verified' : 'counterfeit',
-            status: isApproved ? 'verified' : 'counterfeit',
-            qr_id: `qr-${batchNo}`,
+            result: statusStr,
+            status: statusStr,
+            qr_id: `qr-${med.batch_no}`,
             medicine: {
               ...med,
               manufacturer: med.manufacturer || 'MedVerify Certified Pharma',
             },
             seller: {
-              company_name: 'MedVerify Certified Pharma',
-              status: 'approved',
+              company_name: med.manufacturer || 'MedVerify Certified Pharma',
+              status: isApproved ? 'approved' : 'pending',
             },
             ai_summary: {
-              description: `${med.name} (Batch ${med.batch_no}) - Category: ${med.category}`,
+              description: `${med.name} (Batch ${med.batch_no}) - Category: ${med.category || 'General'}`,
               dosage_instructions: med.dosage || 'Take as prescribed by doctor',
-              side_effects: ['Mild dizziness in rare cases', 'Consult doctor if symptoms persist'],
-              contraindications: ['Follow prescribed dosage guidelines'],
+              side_effects: ['Follow doctor instructions', 'Store in cool and dry place'],
+              contraindications: ['Keep out of reach of children'],
             },
           },
         });
       }
 
       if (pathname.includes('/scan/verify-qr/')) {
-        const qrId = decodeURIComponent(pathname.split('/scan/verify-qr/')[1] || '');
+        const qrId = decodeURIComponent(pathname.split('/scan/verify-qr/')[1] || '').trim();
         const qr = db.qr_codes?.find((q) => q.id === qrId);
-        const med = (qr && db.medicines.find((m) => m.id === qr.medicine_id)) || db.medicines[0];
+        let med = qr ? db.medicines.find((m) => m.id === qr.medicine_id) : null;
+        
+        if (!med) {
+          // Extract batch if qrId is like qr-uuid-F001 or qr-F001
+          const bMatch = qrId.match(/([A-Z]{1,3}\d{3,4})/i);
+          if (bMatch) {
+            med = db.medicines.find((m) => m.batch_no?.toUpperCase() === bMatch[1].toUpperCase());
+          }
+        }
+
+        if (!med) {
+          med = db.medicines[0];
+        }
+
+        const isApproved = med.approval_status === 'approved';
+        const statusStr = isApproved ? 'verified' : (med.approval_status === 'pending' ? 'pending' : 'rejected');
 
         return jsonResponse({
-          message: 'Medicine verified',
+          message: isApproved ? 'Medicine verified' : `Medicine status: ${statusStr.toUpperCase()}`,
           data: {
-            verified: true,
-            result: 'verified',
-            status: 'verified',
+            verified: isApproved,
+            result: statusStr,
+            status: statusStr,
             qr_id: qrId,
             medicine: {
               ...med,
               manufacturer: med.manufacturer || 'MedVerify Certified Pharma',
             },
             seller: {
-              company_name: 'MedVerify Certified Pharma',
-              status: 'approved',
+              company_name: med.manufacturer || 'MedVerify Certified Pharma',
+              status: isApproved ? 'approved' : 'pending',
             },
             ai_summary: {
-              description: `${med.name} (Batch ${med.batch_no}) - Category: ${med.category}`,
+              description: `${med.name} (Batch ${med.batch_no}) - Category: ${med.category || 'General'}`,
               dosage_instructions: med.dosage || 'Take as prescribed by doctor',
-              side_effects: ['Consult healthcare provider for full side-effect warnings'],
-              contraindications: ['Follow prescribed dosage guidelines'],
+              side_effects: ['Follow doctor instructions', 'Store in cool and dry place'],
+              contraindications: ['Keep out of reach of children'],
             },
           },
         });
@@ -449,7 +483,7 @@ export function setupMockServer() {
         if (typeof file === 'string') filename = file;
         else if (file && file.name) filename = file.name;
 
-        // Extract batch regex: (e.g. F001, A007, B123)
+        // 1. Try batch extraction from filename: e.g. F001, A007, B001
         let matchedMed = null;
         const match = filename.match(/([A-Z]{1,3}\d{3,4})/i);
         if (match) {
@@ -457,17 +491,26 @@ export function setupMockServer() {
           matchedMed = db.medicines.find((m) => m.batch_no?.toUpperCase() === batch);
         }
 
-        // Name match fallback
+        // 2. Try medicine name match
         if (!matchedMed && filename) {
           const cleanName = filename.toLowerCase().replace(/[_\-\.]/g, ' ');
-          matchedMed = db.medicines.find((m) => cleanName.includes(m.name?.toLowerCase()));
+          matchedMed = db.medicines.find((m) => m.name && cleanName.includes(m.name.toLowerCase().trim()));
+        }
+
+        // 3. If still not matched, check if filename matches any qr_codes record
+        if (!matchedMed && filename) {
+          const foundQr = db.qr_codes?.find((q) => filename.includes(q.id));
+          if (foundQr) {
+            matchedMed = db.medicines.find((m) => m.id === foundQr.medicine_id);
+          }
         }
 
         if (!matchedMed) {
-          matchedMed = db.medicines[0]; // fallback
+          matchedMed = db.medicines[0]; // fallback to first medicine
         }
 
         const isApproved = matchedMed.approval_status === 'approved';
+        const statusStr = isApproved ? 'verified' : (matchedMed.approval_status === 'pending' ? 'pending' : 'rejected');
 
         return jsonResponse({
           message: 'QR code scanned successfully',
@@ -482,13 +525,14 @@ export function setupMockServer() {
           description: matchedMed.description,
           usage: matchedMed.usage,
           qr_id: `qr-${matchedMed.batch_no}`,
+          approval_status: matchedMed.approval_status,
           verified: isApproved,
-          result: isApproved ? 'verified' : 'counterfeit',
-          status: isApproved ? 'verified' : 'counterfeit',
+          result: statusStr,
+          status: statusStr,
           ai_summary: {
-            description: `${matchedMed.name} (Batch ${matchedMed.batch_no}) - Category: ${matchedMed.category}`,
+            description: `${matchedMed.name} (Batch ${matchedMed.batch_no}) - Category: ${matchedMed.category || 'General'}`,
             dosage_instructions: matchedMed.dosage || 'Take 1 tablet daily after food',
-            side_effects: ['None reported under normal dosage', 'Consult physician if allergic'],
+            side_effects: ['Store in cool dry place', 'Consult physician if allergic'],
             contraindications: ['Keep out of reach of children'],
           },
         });
