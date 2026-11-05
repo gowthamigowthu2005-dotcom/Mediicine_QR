@@ -215,7 +215,6 @@ export const MedicineDatabase = () => {
                 value={selectedCategory}
                 onValueChange={(value) => {
                   setSelectedCategory(value);
-                  setSearchResults([]);
                   setCurrentPage(1);
                 }}
               >

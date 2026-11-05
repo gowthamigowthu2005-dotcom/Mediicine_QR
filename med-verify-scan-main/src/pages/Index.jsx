@@ -1,7 +1,7 @@
 import { Hero } from "@/components/Hero";
 import { Navigation } from "@/components/Navigation";
 import { QRScanner } from "@/components/QRScanner";
-import { MedicineDatabase } from "@/components/MedicineDatabase";
+import { UserMedicineDatabase } from "@/components/UserMedicineDatabase";
 import { AIMedicineAssistant } from "@/components/AIMedicineAssistant";
 import FloatingAIChat from "@/components/FloatingAIChat";
 import { Button } from "@/components/ui/button";
@@ -73,38 +73,14 @@ const Index = () => {
       <Navigation />
       <Hero />
 
-      {/* 1. Live QR Scanner Section */}
-      <section id="scanner" className="py-12 bg-card/30 border-y">
-        <QRScanner />
-      </section>
+      {/* 1. Live Medicine QR Scanner (#scanner) */}
+      <QRScanner />
 
-      {/* 2. Medicine Database Section */}
-      <section id="database" className="py-16">
-        <div className="container mx-auto px-4 max-w-6xl">
-          <div className="text-center mb-10">
-            <Badge className="mb-3">Medicine Catalog</Badge>
-            <h2 className="text-4xl font-bold mb-3">Explore Medicine Database</h2>
-            <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-              Search authentic medications, verify batch numbers, strengths, and expiry details
-            </p>
-          </div>
-          <MedicineDatabase />
-        </div>
-      </section>
+      {/* 2. Public Medicine Database Catalog (#database) */}
+      <UserMedicineDatabase />
 
-      {/* 3. AI Medicine Assistant Section */}
-      <section id="ai-assistant" className="py-16 bg-secondary/10 border-y">
-        <div className="container mx-auto px-4 max-w-5xl">
-          <div className="text-center mb-10">
-            <Badge className="mb-3 bg-purple-100 text-purple-800 border-purple-200">AI Assistant</Badge>
-            <h2 className="text-4xl font-bold mb-3">AI Medicine Assistant</h2>
-            <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-              Ask questions about medicine usages, dosages, side effects, and precautions
-            </p>
-          </div>
-          <AIMedicineAssistant />
-        </div>
-      </section>
+      {/* 3. AI Medicine Assistant (#ai-assistant) */}
+      <AIMedicineAssistant />
       
       {/* Features Showcase Section */}
       <section className="py-20 px-4 bg-gradient-to-b from-background to-secondary/5">
